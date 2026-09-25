@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Date: Thu, 25 Sep 2026 10:14:31 GMT
+Content-Type: text/html; charset=UTF-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Server: nginx/1.18.0 (Ubuntu)
+X-Powered-By: PHP/7.4.3
+Strict-Transport-Security: max-age=300
+Content-Security-Policy: default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; frame-ancestors *; report-uri /csp-report
+X-Frame-Options: ALLOW-FROM https://partner.example.com
+X-XSS-Protection: 1; mode=block
+Referrer-Policy: unsafe-url
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, TRACE
+Access-Control-Allow-Headers: *
+Cache-Control: public, max-age=86400
+Set-Cookie: PHPSESSID=9b2f1ad4c8e7; path=/; domain=example.com
+Set-Cookie: tracking_id=7de91c; path=/; Max-Age=63072000; SameSite=None
+Expect-CT: max-age=86400, enforce
+Via: 1.1 edge-cache-04.internal.lab

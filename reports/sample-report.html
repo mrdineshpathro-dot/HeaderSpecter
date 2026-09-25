@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="HeaderSpecter 1.0.0">
+<title>HeaderSpecter — Security header report · 127.0.0.1</title>
+<style>
+:root{
+  --bg:#080b10; --bg2:#0d131b; --panel:#111823; --panel2:#0d141d; --line:#1e2a38;
+  --text:#e8eef5; --muted:#8fa0b3; --accent:#22d3ee; --accent2:#a78bfa;
+  --crit:#ff4d6d; --high:#ff7849; --med:#f5c451; --low:#38bdf8; --info:#8b93f8; --pass:#34d399;
+  --mono:"JetBrains Mono","Fira Code","SFMono-Regular",Consolas,"Liberation Mono",monospace;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(1200px 600px at 20% -10%,#12202c 0%,var(--bg) 60%);color:var(--text);
+  font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+header.masthead{display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:space-between;
+  border:1px solid var(--line);background:linear-gradient(135deg,rgba(34,211,238,.08),rgba(167,139,250,.06));
+  border-radius:16px;padding:24px 28px;margin-bottom:28px}
+.brand{display:flex;flex-direction:column;gap:6px}
+.brand h1{margin:0;font-size:30px;letter-spacing:.5px}
+.brand h1 span{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;
+  background-clip:text;color:transparent}
+.brand p{margin:0;color:var(--muted);font-size:14px}
+.masthead .meta{text-align:right;color:var(--muted);font-size:13px;font-family:var(--mono)}
+section{margin:26px 0}
+h2{font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:0 0 14px;
+  padding-bottom:8px;border-bottom:1px solid var(--line)}
+h3{font-size:15px;margin:22px 0 10px;color:var(--text)}
+.card{background:linear-gradient(180deg,var(--panel),var(--panel2));border:1px solid var(--line);
+  border-radius:14px;padding:20px 22px}
+.grid{display:grid;gap:16px}
+.grid.cols-2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.grid.cols-3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.grid.cols-4{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat .v{font-size:24px;font-weight:700;font-family:var(--mono)}
+.stat .l{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.09em}
+.scorebox{display:flex;gap:26px;align-items:center;flex-wrap:wrap}
+.ring{flex:0 0 auto}
+.score-detail{flex:1 1 260px;min-width:240px}
+.score-detail .grade{font-size:15px;color:var(--muted);font-family:var(--mono)}
+.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;
+  letter-spacing:.08em;font-family:var(--mono);border:1px solid transparent}
+.badge.crit{color:#fff;background:rgba(255,77,109,.18);border-color:var(--crit)}
+.badge.high{color:#ffd9c9;background:rgba(255,120,73,.16);border-color:var(--high)}
+.badge.med{color:#fdf0c9;background:rgba(245,196,81,.14);border-color:var(--med)}
+.badge.low{color:#cdeeff;background:rgba(56,189,248,.14);border-color:var(--low)}
+.badge.info{color:#dcdcff;background:rgba(139,147,248,.14);border-color:var(--info)}
+.badge.pass{color:#c8f7e4;background:rgba(52,211,153,.14);border-color:var(--pass)}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+tbody tr:hover{background:rgba(34,211,238,.04)}
+code,pre,.mono{font-family:var(--mono)}
+code{background:rgba(148,163,184,.12);padding:1px 6px;border-radius:5px;font-size:12.5px;word-break:break-all}
+pre{background:#070a0f;border:1px solid var(--line);border-radius:10px;padding:14px 16px;overflow:auto;
+  font-size:12.5px;color:#cfe8f5}
+.finding{border:1px solid var(--line);border-left-width:4px;border-radius:12px;padding:16px 18px;margin-bottom:14px;
+  background:var(--panel)}
+.finding.crit{border-left-color:var(--crit)} .finding.high{border-left-color:var(--high)}
+.finding.med{border-left-color:var(--med)} .finding.low{border-left-color:var(--low)}
+.finding.info{border-left-color:var(--info)} .finding.pass{border-left-color:var(--pass)}
+.finding h4{margin:0 0 8px;font-size:15px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.finding .fid{font-family:var(--mono);color:var(--muted);font-size:12px}
+.finding dl{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;margin:10px 0 0;font-size:13.5px}
+.finding dt{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.07em}
+.finding dd{margin:0}
+.chain{list-style:none;margin:0;padding:0;font-family:var(--mono);font-size:13px}
+.chain li{padding:8px 0 8px 22px;border-left:2px solid var(--line);position:relative;margin-left:8px}
+.chain li:before{content:"";position:absolute;left:-6px;top:14px;width:10px;height:10px;border-radius:50%;
+  background:var(--accent)}
+.chain li.final:before{background:var(--pass)}
+.muted{color:var(--muted)}
+.pill{display:inline-block;margin:2px 6px 2px 0;padding:2px 8px;border:1px solid var(--line);border-radius:999px;
+  font-size:11.5px;font-family:var(--mono);color:var(--muted)}
+details{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:var(--panel)}
+details summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:14px}
+details[open] summary{margin-bottom:12px}
+footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.notice{border:1px solid rgba(245,196,81,.35);background:rgba(245,196,81,.08);border-radius:12px;padding:12px 16px;
+  color:#f8e6b4;font-size:13px}
+.target-nav a{display:inline-block;margin:0 10px 8px 0;padding:6px 12px;border:1px solid var(--line);
+  border-radius:999px;font-size:13px;font-family:var(--mono)}
+@media(max-width:640px){
+  .finding dl{grid-template-columns:1fr}
+  .masthead .meta{text-align:left}
+  .wrap{padding:18px 14px 60px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="brand">
+      <h1>Header<span>Specter</span></h1>
+      <p>HTTP Security Header Analyzer &amp; Security Posture Scanner</p>
+      <p class="muted">Created by Mr Dinesh Pathro · <a href="https://buymeacoffee.com/mrdineshpathro" rel="noreferrer noopener">https://buymeacoffee.com/mrdineshpathro</a></p>
+    </div>
+    <div class="meta">
+      <div>v1.0.0</div>
+      <div>2026-09-25T12:09:47+00:00</div>
+      <div>1 target(s)</div>
+    </div>
+  </header>
+  <div class="notice">
+    This report documents observed HTTP response headers and their security implications. Remediation snippets are
+    templates and must be reviewed against the application's own resource requirements before deployment.
+  </div>
+  
+<section id="target-0-127.0.0.1-8080-weak">
+  <h2>Target · http://127.0.0.1:8080/weak</h2>
+  <div class="grid cols-4">
+    <div class="stat"><div class="v">200</div><div class="l">HTTP status</div></div>
+    <div class="stat"><div class="v">22 ms</div><div class="l">Response time</div></div>
+    <div class="stat"><div class="v">19</div><div class="l">Headers</div></div>
+    <div class="stat"><div class="v">0</div><div class="l">Redirects</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Security Score</h2>
+  <div class="card scorebox">
+    
+<div class="ring">
+  <svg width="140" height="140" viewBox="0 0 140 140" role="img" aria-label="Security score 0 out of 100">
+    <circle cx="70" cy="70" r="54" fill="none" stroke="#1e2a38" stroke-width="12"/>
+    <circle cx="70" cy="70" r="54" fill="none" stroke="var(--crit)" stroke-width="12" stroke-linecap="round"
+            stroke-dasharray="0.00 339.29" transform="rotate(-90 70 70)"/>
+    <text x="70" y="66" text-anchor="middle" fill="#e8eef5" font-size="30" font-family="monospace"
+          font-weight="700">0</text>
+    <text x="70" y="90" text-anchor="middle" fill="#8fa0b3" font-size="13" font-family="monospace">/ 100 · F</text>
+  </svg>
+</div>
+
+    <div class="score-detail">
+      <div class="grade">base 100 − 147.8 deductions
+        + 0.0 bonus = <strong>0.0</strong></div>
+      <div class="grid cols-4" style="margin-top:14px"><div class='stat'><div class='v' style='color:var(--crit)'>0</div><div class='l'>Critical</div></div><div class='stat'><div class='v' style='color:var(--high)'>11</div><div class='l'>High</div></div><div class='stat'><div class='v' style='color:var(--med)'>11</div><div class='l'>Medium</div></div><div class='stat'><div class='v' style='color:var(--low)'>16</div><div class='l'>Low</div></div><div class='stat'><div class='v' style='color:var(--info)'>6</div><div class='l'>Info</div></div></div>
+    </div>
+  </div>
+  <details style="margin-top:14px">
+    <summary>Score breakdown (44 deductions)</summary>
+    <table><thead><tr><th>ID</th><th>Severity</th><th>Category</th><th>Finding</th><th>Points</th></tr></thead>
+    <tbody><tr><td class='mono'>HS-007</td><td><span class="badge high">HIGH</span></td><td>transport</td><td>Target served over plaintext HTTP</td><td class='mono'>-15.0</td></tr><tr><td class='mono'>HS-101</td><td><span class="badge high">HIGH</span></td><td>csp</td><td>CSP allows &#x27;unsafe-inline&#x27; scripts</td><td class='mono'>-18.8</td></tr><tr><td class='mono'>HS-103</td><td><span class="badge high">HIGH</span></td><td>csp</td><td>CSP directive uses a wildcard source</td><td class='mono'>-13.2*</td></tr><tr><td class='mono'>HS-103</td><td><span class="badge high">HIGH</span></td><td>csp</td><td>CSP directive uses a wildcard source</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-109</td><td><span class="badge high">HIGH</span></td><td>csp</td><td>CSP allows a dangerous scheme source</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-117</td><td><span class="badge high">HIGH</span></td><td>csp</td><td>CSP frame-ancestors allows any origin</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-311</td><td><span class="badge high">HIGH</span></td><td>cors</td><td>CORS wildcard combined with credentials</td><td class='mono'>-16.5</td></tr><tr><td class='mono'>HS-400</td><td><span class="badge high">HIGH</span></td><td>cookies</td><td>Cookie without Secure attribute (PHPSESSID)</td><td class='mono'>-15.0</td></tr><tr><td class='mono'>HS-403</td><td><span class="badge high">HIGH</span></td><td>cookies</td><td>SameSite=None cookie without Secure (tracking)</td><td class='mono'>-9.0*</td></tr><tr><td class='mono'>HS-407</td><td><span class="badge high">HIGH</span></td><td>cookies</td><td>Cookie set over plaintext HTTP (PHPSESSID)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-407</td><td><span class="badge high">HIGH</span></td><td>cookies</td><td>Cookie set over plaintext HTTP (tracking)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-002</td><td><span class="badge med">MEDIUM</span></td><td>transport</td><td>HSTS max-age is too short</td><td class='mono'>-8.4</td></tr><tr><td class='mono'>HS-102</td><td><span class="badge med">MEDIUM</span></td><td>csp</td><td>CSP allows &#x27;unsafe-eval&#x27;</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-103</td><td><span class="badge med">MEDIUM</span></td><td>csp</td><td>CSP directive uses a wildcard source</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-103</td><td><span class="badge med">MEDIUM</span></td><td>csp</td><td>CSP directive uses a wildcard source</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-104</td><td><span class="badge med">MEDIUM</span></td><td>csp</td><td>CSP does not restrict object-src</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-105</td><td><span class="badge med">MEDIUM</span></td><td>csp</td><td>CSP does not restrict base-uri</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-202</td><td><span class="badge med">MEDIUM</span></td><td>framing</td><td>X-Frame-Options uses obsolete ALLOW-FROM</td><td class='mono'>-7.0</td></tr><tr><td class='mono'>HS-210</td><td><span class="badge med">MEDIUM</span></td><td>content</td><td>Missing X-Content-Type-Options</td><td class='mono'>-7.0</td></tr><tr><td class='mono'>HS-221</td><td><span class="badge med">MEDIUM</span></td><td>referrer</td><td>Weak Referrer-Policy value</td><td class='mono'>-6.3</td></tr><tr><td class='mono'>HS-400</td><td><span class="badge med">MEDIUM</span></td><td>cookies</td><td>Cookie without Secure attribute (tracking)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-401</td><td><span class="badge med">MEDIUM</span></td><td>cookies</td><td>Cookie without HttpOnly attribute (PHPSESSID)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-003</td><td><span class="badge low">LOW</span></td><td>transport</td><td>HSTS does not cover subdomains</td><td class='mono'>-3.6</td></tr><tr><td class='mono'>HS-113</td><td><span class="badge low">LOW</span></td><td>csp</td><td>CSP style-src allows &#x27;unsafe-inline&#x27;</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-114</td><td><span class="badge low">LOW</span></td><td>csp</td><td>CSP does not restrict form-action</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-230</td><td><span class="badge low">LOW</span></td><td>permissions</td><td>Missing Permissions-Policy</td><td class='mono'>-2.5</td></tr><tr><td class='mono'>HS-300</td><td><span class="badge low">LOW</span></td><td>cross-origin</td><td>Missing Cross-Origin-Opener-Policy</td><td class='mono'>-2.4</td></tr><tr><td class='mono'>HS-302</td><td><span class="badge low">LOW</span></td><td>cross-origin</td><td>Missing Cross-Origin-Resource-Policy</td><td class='mono'>-2.4</td></tr><tr><td class='mono'>HS-316</td><td><span class="badge low">LOW</span></td><td>cors</td><td>CORS allows unsafe methods broadly</td><td class='mono'>-3.0</td></tr><tr><td class='mono'>HS-317</td><td><span class="badge low">LOW</span></td><td>cors</td><td>CORS allows arbitrary request headers</td><td class='mono'>-3.0</td></tr><tr><td class='mono'>HS-401</td><td><span class="badge low">LOW</span></td><td>cookies</td><td>Cookie without HttpOnly attribute (tracking)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-402</td><td><span class="badge low">LOW</span></td><td>cookies</td><td>Cookie without SameSite attribute (PHPSESSID)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-404</td><td><span class="badge low">LOW</span></td><td>cookies</td><td>Cookie scoped to a broad parent domain (PHPSESSID)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-500</td><td><span class="badge low">LOW</span></td><td>disclosure</td><td>Server software version disclosed</td><td class='mono'>-1.8</td></tr><tr><td class='mono'>HS-501</td><td><span class="badge low">LOW</span></td><td>disclosure</td><td>Technology disclosed via X-Powered-By</td><td class='mono'>-1.8</td></tr><tr><td class='mono'>HS-502</td><td><span class="badge low">LOW</span></td><td>disclosure</td><td>Framework version headers exposed</td><td class='mono'>-3.0</td></tr><tr><td class='mono'>HS-511</td><td><span class="badge low">LOW</span></td><td>deprecated</td><td>X-XSS-Protection filtering enabled</td><td class='mono'>-3.0</td></tr><tr><td class='mono'>HS-601</td><td><span class="badge low">LOW</span></td><td>caching</td><td>Potentially sensitive response is cacheable</td><td class='mono'>-3.0</td></tr><tr><td class='mono'>HS-004</td><td><span class="badge info">INFO</span></td><td>transport</td><td>HSTS preload not requested</td><td class='mono'>-0.6</td></tr><tr><td class='mono'>HS-006</td><td><span class="badge info">INFO</span></td><td>transport</td><td>HSTS sent over plaintext HTTP</td><td class='mono'>-0.6</td></tr><tr><td class='mono'>HS-120</td><td><span class="badge info">INFO</span></td><td>csp</td><td>CSP uses deprecated report-uri only</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-304</td><td><span class="badge info">INFO</span></td><td>cross-origin</td><td>Missing Cross-Origin-Embedder-Policy</td><td class='mono'>-0.3</td></tr><tr><td class='mono'>HS-406</td><td><span class="badge info">INFO</span></td><td>cookies</td><td>Long-lived persistent cookie (tracking)</td><td class='mono'>-0.0*</td></tr><tr><td class='mono'>HS-516</td><td><span class="badge info">INFO</span></td><td>disclosure</td><td>Missing X-Permitted-Cross-Domain-Policies</td><td class='mono'>-0.5</td></tr></tbody></table>
+    <p class="muted">* capped by the category limit defined in the scoring configuration.</p>
+  </details>
+</section>
+
+<section><h2>Findings</h2>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>Target served over plaintext HTTP</span> <span class="fid">HS-007</span></h4>
+  <dl>
+    
+    <dt>Observed</dt><dd><code>http://127.0.0.1:8080/weak</code></dd>
+    <dt>Detail</dt><dd>The target was served over plaintext HTTP (http://127.0.0.1:8080/weak); no transport encryption protects the response or its cookies.</dd>
+    <dt>Impact</dt><dd class="muted">All traffic — including cookies, tokens and form data — is transmitted in the clear and can be read or modified by anyone on the network path.</dd>
+    <dt>Fix</dt><dd>Terminate TLS for this host and permanently redirect HTTP to HTTPS.</dd>
+    <dt>Template</dt><dd><pre>Strict-Transport-Security: max-age=31536000; includeSubDomains</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://owasp.org/www-project-secure-headers/" rel="noreferrer noopener" target="_blank">owasp.org/www-project-secure-headers/</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>CSP allows &#x27;unsafe-inline&#x27; scripts</span> <span class="fid">HS-101</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>script-src: * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:</code></dd>
+    <dt>Detail</dt><dd>script-src allows &#x27;unsafe-inline&#x27;, so inline scripts and event handlers execute.</dd>
+    <dt>Impact</dt><dd class="muted">&#x27;unsafe-inline&#x27; in a script directive permits inline &lt;script&gt; blocks and event handlers, which is exactly the capability an XSS payload needs — the policy stops being a meaningful mitigation.</dd>
+    <dt>Fix</dt><dd>Move inline scripts to external files, or adopt a nonce/hash based strict CSP with &#x27;strict-dynamic&#x27; for third-party loaders.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: script-src &#x27;nonce-{RANDOM}&#x27; &#x27;strict-dynamic&#x27; https:; object-src &#x27;none&#x27;; base-uri &#x27;self&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://csp.withgoogle.com/docs/strict-csp.html" rel="noreferrer noopener" target="_blank">csp.withgoogle.com/docs/strict-csp.html</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>CSP directive uses a wildcard source</span> <span class="fid">HS-103</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>default-src: * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</code></dd>
+    <dt>Detail</dt><dd>default-src contains the wildcard source &#x27;*&#x27;, allowing resources from any matching origin.</dd>
+    <dt>Impact</dt><dd class="muted">A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.</dd>
+    <dt>Fix</dt><dd>Replace &#x27;*&#x27; with the explicit origins the application actually needs.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: default-src &#x27;self&#x27;; img-src &#x27;self&#x27; https://cdn.example.com</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>CSP directive uses a wildcard source</span> <span class="fid">HS-103</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>script-src: * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:</code></dd>
+    <dt>Detail</dt><dd>script-src contains the wildcard source &#x27;*&#x27;, allowing resources from any matching origin.</dd>
+    <dt>Impact</dt><dd class="muted">A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.</dd>
+    <dt>Fix</dt><dd>Replace &#x27;*&#x27; with the explicit origins the application actually needs.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: default-src &#x27;self&#x27;; img-src &#x27;self&#x27; https://cdn.example.com</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>CSP allows a dangerous scheme source</span> <span class="fid">HS-109</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>script-src: data:</code></dd>
+    <dt>Detail</dt><dd>Dangerous scheme source(s) in an executable context: script-src: data:.</dd>
+    <dt>Impact</dt><dd class="muted">data:, blob: or filesystem: in a script/object directive lets an attacker encode a payload directly into a URI and execute it, bypassing origin restrictions.</dd>
+    <dt>Fix</dt><dd>Remove data:/blob: from script-src and object-src; keep them only for img-src or media where genuinely required.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: script-src &#x27;self&#x27; &#x27;nonce-{RANDOM}&#x27;; object-src &#x27;none&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>CSP frame-ancestors allows any origin</span> <span class="fid">HS-117</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>frame-ancestors: *</code></dd>
+    <dt>Detail</dt><dd>frame-ancestors * allows any site to frame this page.</dd>
+    <dt>Impact</dt><dd class="muted">frame-ancestors * lets any site frame the page, which enables clickjacking and UI redress attacks against authenticated users.</dd>
+    <dt>Fix</dt><dd>Set frame-ancestors &#x27;none&#x27; or list the specific origins allowed to embed the page.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: frame-ancestors &#x27;none&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>CORS wildcard combined with credentials</span> <span class="fid">HS-311</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>access-control-allow-origin</code></dd>
+    <dt>Observed</dt><dd><code>* + credentials</code></dd>
+    <dt>Detail</dt><dd>Access-Control-Allow-Origin is &#x27;*&#x27; while Access-Control-Allow-Credentials is true.</dd>
+    <dt>Impact</dt><dd class="muted">A wildcard origin together with Access-Control-Allow-Credentials: true is rejected by browsers but signals a misconfigured CORS layer; if the wildcard is ever replaced by origin reflection, any site could read authenticated responses.</dd>
+    <dt>Fix</dt><dd>Never combine credentials with a wildcard. Echo one validated origin and keep the allow-list short.</dd>
+    <dt>Template</dt><dd><pre>Access-Control-Allow-Origin: https://app.example.com
+Access-Control-Allow-Credentials: true
+Vary: Origin</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/A…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>Cookie without Secure attribute (PHPSESSID)</span> <span class="fid">HS-400</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;PHPSESSID&#x27; is missing the Secure attribute.</dd>
+    <dt>Impact</dt><dd class="muted">The cookie can be transmitted over plaintext HTTP, so an on-path attacker or a single mixed-content request can capture it.</dd>
+    <dt>Fix</dt><dd>Add the Secure attribute to every cookie and serve the site exclusively over HTTPS.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>SameSite=None cookie without Secure (tracking)</span> <span class="fid">HS-403</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>tracking=1; Path=/; Max-Age=63072000; SameSite=None</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;tracking&#x27; uses SameSite=None without the Secure attribute; browsers reject it.</dd>
+    <dt>Impact</dt><dd class="muted">SameSite=None requires Secure. Browsers reject the cookie, and if it is accepted anywhere it is sent cross-site over plaintext connections.</dd>
+    <dt>Fix</dt><dd>Always pair SameSite=None with Secure, and question whether cross-site delivery is really needed.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=None</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>Cookie set over plaintext HTTP (PHPSESSID)</span> <span class="fid">HS-407</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;PHPSESSID&#x27; was set over a plaintext HTTP response.</dd>
+    <dt>Impact</dt><dd class="muted">The cookie was delivered over an unencrypted channel and can be read by anyone on the path, regardless of its attributes.</dd>
+    <dt>Fix</dt><dd>Serve the application over HTTPS only and set cookies from HTTPS responses.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding high">
+  <h4><span class="badge high">HIGH</span> <span>Cookie set over plaintext HTTP (tracking)</span> <span class="fid">HS-407</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>tracking=1; Path=/; Max-Age=63072000; SameSite=None</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;tracking&#x27; was set over a plaintext HTTP response.</dd>
+    <dt>Impact</dt><dd class="muted">The cookie was delivered over an unencrypted channel and can be read by anyone on the path, regardless of its attributes.</dd>
+    <dt>Fix</dt><dd>Serve the application over HTTPS only and set cookies from HTTPS responses.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>HSTS max-age is too short</span> <span class="fid">HS-002</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>strict-transport-security</code></dd>
+    <dt>Observed</dt><dd><code>max-age=300</code></dd>
+    <dt>Detail</dt><dd>max-age is 300 seconds (~0 days); at least 31536000 (1 year) is recommended.</dd>
+    <dt>Impact</dt><dd class="muted">A short max-age shrinks the window in which the browser enforces HTTPS. Once it expires the next navigation can be downgraded to HTTP again.</dd>
+    <dt>Fix</dt><dd>Use max-age=31536000 (one year). Ramp up gradually (300 → 86400 → 31536000) if the estate is still being migrated.</dd>
+    <dt>Template</dt><dd><pre>Strict-Transport-Security: max-age=31536000; includeSubDomains</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>CSP allows &#x27;unsafe-eval&#x27;</span> <span class="fid">HS-102</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>script-src: * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:</code></dd>
+    <dt>Detail</dt><dd>script-src allows &#x27;unsafe-eval&#x27;.</dd>
+    <dt>Impact</dt><dd class="muted">&#x27;unsafe-eval&#x27; re-enables eval(), new Function() and string timers, giving injected content a direct route from data to executable code.</dd>
+    <dt>Fix</dt><dd>Remove &#x27;unsafe-eval&#x27; and migrate templating/JSON parsing away from eval-based helpers (use JSON.parse and pre-compiled templates).</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: script-src &#x27;self&#x27; &#x27;nonce-{RANDOM}&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>CSP directive uses a wildcard source</span> <span class="fid">HS-103</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>img-src: *</code></dd>
+    <dt>Detail</dt><dd>img-src contains the wildcard source &#x27;*&#x27;, allowing resources from any matching origin.</dd>
+    <dt>Impact</dt><dd class="muted">A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.</dd>
+    <dt>Fix</dt><dd>Replace &#x27;*&#x27; with the explicit origins the application actually needs.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: default-src &#x27;self&#x27;; img-src &#x27;self&#x27; https://cdn.example.com</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>CSP directive uses a wildcard source</span> <span class="fid">HS-103</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>style-src: * &#x27;unsafe-inline&#x27;</code></dd>
+    <dt>Detail</dt><dd>style-src contains the wildcard source &#x27;*&#x27;, allowing resources from any matching origin.</dd>
+    <dt>Impact</dt><dd class="muted">A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.</dd>
+    <dt>Fix</dt><dd>Replace &#x27;*&#x27; with the explicit origins the application actually needs.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: default-src &#x27;self&#x27;; img-src &#x27;self&#x27; https://cdn.example.com</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>CSP does not restrict object-src</span> <span class="fid">HS-104</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>default-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;; script-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:; style-src * &#x27;unsafe-inline&#x27;; img-src *; frame-ancestors *; report-uri /csp-report</code></dd>
+    <dt>Detail</dt><dd>object-src (via default-src) is * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; instead of &#x27;none&#x27;.</dd>
+    <dt>Impact</dt><dd class="muted">Plugin content (&lt;object&gt;, &lt;embed&gt;, &lt;applet&gt;) can execute scripts in the page&#x27;s context and has historically been used to bypass CSP entirely.</dd>
+    <dt>Fix</dt><dd>Add object-src &#x27;none&#x27; — virtually no modern application needs plugin content.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: object-src &#x27;none&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://csp.withgoogle.com/docs/strict-csp.html" rel="noreferrer noopener" target="_blank">csp.withgoogle.com/docs/strict-csp.html</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>CSP does not restrict base-uri</span> <span class="fid">HS-105</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>default-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;; script-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:; style-src * &#x27;unsafe-inline&#x27;; img-src *; frame-ancestors *; report-uri /csp-report</code></dd>
+    <dt>Detail</dt><dd>base-uri is not set (it does not fall back to default-src).</dd>
+    <dt>Impact</dt><dd class="muted">Without base-uri an injected &lt;base&gt; tag can re-point every relative URL on the page (scripts, forms, links) at an attacker-controlled host.</dd>
+    <dt>Fix</dt><dd>Add base-uri &#x27;self&#x27; (or &#x27;none&#x27; for pages with no relative-base requirements).</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: base-uri &#x27;self&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>X-Frame-Options uses obsolete ALLOW-FROM</span> <span class="fid">HS-202</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>x-frame-options</code></dd>
+    <dt>Observed</dt><dd><code>ALLOW-FROM https://partner.example.com</code></dd>
+    <dt>Detail</dt><dd>ALLOW-FROM is not supported by modern browsers, so the page is effectively unprotected.</dd>
+    <dt>Impact</dt><dd class="muted">ALLOW-FROM was never implemented by Chrome/Safari and was removed from Firefox, so the directive provides no protection in current browsers.</dd>
+    <dt>Fix</dt><dd>Replace it with CSP frame-ancestors listing the permitted embedding origins.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: frame-ancestors https://partner.example.com</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/X…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>Missing X-Content-Type-Options</span> <span class="fid">HS-210</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>x-content-type-options</code></dd>
+    
+    <dt>Detail</dt><dd>X-Content-Type-Options was not returned.</dd>
+    <dt>Impact</dt><dd class="muted">Without nosniff, browsers may MIME-sniff responses and execute a user-uploaded or text response as script or stylesheet.</dd>
+    <dt>Fix</dt><dd>Send X-Content-Type-Options: nosniff on every response and make sure Content-Type values are correct.</dd>
+    <dt>Template</dt><dd><pre>X-Content-Type-Options: nosniff</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/X…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>Weak Referrer-Policy value</span> <span class="fid">HS-221</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>referrer-policy</code></dd>
+    <dt>Observed</dt><dd><code>unsafe-url</code></dd>
+    <dt>Detail</dt><dd>Effective policy &#x27;unsafe-url&#x27;: Sends the full URL (path and query) to every destination, including plaintext HTTP origins.</dd>
+    <dt>Impact</dt><dd class="muted">This policy sends full URLs (potentially including session identifiers, reset tokens or internal paths) to third parties, and some variants leak over plaintext downgrades.</dd>
+    <dt>Fix</dt><dd>Switch to strict-origin-when-cross-origin, same-origin or no-referrer.</dd>
+    <dt>Template</dt><dd><pre>Referrer-Policy: strict-origin-when-cross-origin</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/R…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>Cookie without Secure attribute (tracking)</span> <span class="fid">HS-400</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>tracking=1; Path=/; Max-Age=63072000; SameSite=None</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;tracking&#x27; is missing the Secure attribute.</dd>
+    <dt>Impact</dt><dd class="muted">The cookie can be transmitted over plaintext HTTP, so an on-path attacker or a single mixed-content request can capture it.</dd>
+    <dt>Fix</dt><dd>Add the Secure attribute to every cookie and serve the site exclusively over HTTPS.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding med">
+  <h4><span class="badge med">MEDIUM</span> <span>Cookie without HttpOnly attribute (PHPSESSID)</span> <span class="fid">HS-401</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;PHPSESSID&#x27; is readable by JavaScript (no HttpOnly attribute). The name suggests it carries session state.</dd>
+    <dt>Impact</dt><dd class="muted">JavaScript can read this cookie, so a single XSS flaw turns into full session theft.</dd>
+    <dt>Fix</dt><dd>Add HttpOnly to all cookies that do not need to be read by client-side scripts.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>HSTS does not cover subdomains</span> <span class="fid">HS-003</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>strict-transport-security</code></dd>
+    <dt>Observed</dt><dd><code>max-age=300</code></dd>
+    <dt>Detail</dt><dd>The policy does not include subdomains.</dd>
+    <dt>Impact</dt><dd class="muted">Without includeSubDomains an attacker can target a forgotten subdomain over HTTP and set or read domain-scoped cookies from there.</dd>
+    <dt>Fix</dt><dd>Add includeSubDomains after verifying that every subdomain (including internal ones) is reachable over HTTPS.</dd>
+    <dt>Template</dt><dd><pre>Strict-Transport-Security: max-age=31536000; includeSubDomains</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>CSP style-src allows &#x27;unsafe-inline&#x27;</span> <span class="fid">HS-113</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>style-src: * &#x27;unsafe-inline&#x27;</code></dd>
+    <dt>Detail</dt><dd>style-src allows &#x27;unsafe-inline&#x27; for stylesheets.</dd>
+    <dt>Impact</dt><dd class="muted">Inline styles enable CSS-based data exfiltration and UI redressing tricks, though the impact is lower than for scripts.</dd>
+    <dt>Fix</dt><dd>Move inline styles into stylesheets or apply nonces/hashes to style blocks.</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: style-src &#x27;self&#x27; &#x27;nonce-{RANDOM}&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>CSP does not restrict form-action</span> <span class="fid">HS-114</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>default-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;; script-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:; style-src * &#x27;unsafe-inline&#x27;; img-src *; frame-ancestors *; report-uri /csp-report</code></dd>
+    <dt>Detail</dt><dd>form-action is not set, so form submissions are unrestricted.</dd>
+    <dt>Impact</dt><dd class="muted">Without form-action an injected or modified form can post user credentials to an attacker-controlled endpoint.</dd>
+    <dt>Fix</dt><dd>Add form-action &#x27;self&#x27; (plus any legitimate payment/SSO endpoints).</dd>
+    <dt>Template</dt><dd><pre>Content-Security-Policy: form-action &#x27;self&#x27;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/form-action" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Missing Permissions-Policy</span> <span class="fid">HS-230</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>permissions-policy</code></dd>
+    
+    <dt>Detail</dt><dd>No Permissions-Policy header was returned.</dd>
+    <dt>Impact</dt><dd class="muted">Powerful browser features (camera, microphone, geolocation, payment) are left at their default availability for the page and for any embedded third-party frames.</dd>
+    <dt>Fix</dt><dd>Send a deny-by-default Permissions-Policy and only enable what the app needs.</dd>
+    <dt>Template</dt><dd><pre>Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/P…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Missing Cross-Origin-Opener-Policy</span> <span class="fid">HS-300</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>cross-origin-opener-policy</code></dd>
+    
+    <dt>Detail</dt><dd>No Cross-Origin-Opener-Policy header was returned.</dd>
+    <dt>Impact</dt><dd class="muted">Without COOP, a window opened by (or opening) this page keeps a cross-origin reference to it, enabling XS-Leaks and tab-nabbing style attacks.</dd>
+    <dt>Fix</dt><dd>Send Cross-Origin-Opener-Policy: same-origin (use same-origin-allow-popups when OAuth popups are required).</dd>
+    <dt>Template</dt><dd><pre>Cross-Origin-Opener-Policy: same-origin</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Missing Cross-Origin-Resource-Policy</span> <span class="fid">HS-302</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>cross-origin-resource-policy</code></dd>
+    
+    <dt>Detail</dt><dd>No Cross-Origin-Resource-Policy header was returned.</dd>
+    <dt>Impact</dt><dd class="muted">CORP tells the browser who may embed this resource. Without it, responses can be pulled into cross-origin documents and abused for side-channel (Spectre-class) leaks.</dd>
+    <dt>Fix</dt><dd>Send Cross-Origin-Resource-Policy: same-origin for private resources, same-site for shared internal assets, cross-origin only for public CDN content.</dd>
+    <dt>Template</dt><dd><pre>Cross-Origin-Resource-Policy: same-origin</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>CORS allows unsafe methods broadly</span> <span class="fid">HS-316</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>access-control-allow-methods</code></dd>
+    <dt>Observed</dt><dd><code>GET, POST, PUT, DELETE, TRACE</code></dd>
+    <dt>Detail</dt><dd>Cross-origin callers may use DELETE, PUT, TRACE.</dd>
+    <dt>Impact</dt><dd class="muted">Allowing every method (including wildcards or state-changing verbs) from other origins widens the CSRF/abuse surface of the API.</dd>
+    <dt>Fix</dt><dd>List only the methods the endpoint actually implements.</dd>
+    <dt>Template</dt><dd><pre>Access-Control-Allow-Methods: GET, POST, OPTIONS</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Methods" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/A…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>CORS allows arbitrary request headers</span> <span class="fid">HS-317</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>access-control-allow-headers</code></dd>
+    <dt>Observed</dt><dd><code>*</code></dd>
+    <dt>Detail</dt><dd>Access-Control-Allow-Headers is &#x27;*&#x27;, allowing any custom request header cross-origin.</dd>
+    <dt>Impact</dt><dd class="muted">A wildcard header allow-list lets cross-origin callers send custom headers such as Authorization or X-Requested-With, which some backends treat as trusted.</dd>
+    <dt>Fix</dt><dd>Enumerate the accepted headers explicitly.</dd>
+    <dt>Template</dt><dd><pre>Access-Control-Allow-Headers: Content-Type, Authorization</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Headers" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/A…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Cookie without HttpOnly attribute (tracking)</span> <span class="fid">HS-401</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>tracking=1; Path=/; Max-Age=63072000; SameSite=None</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;tracking&#x27; is readable by JavaScript (no HttpOnly attribute).</dd>
+    <dt>Impact</dt><dd class="muted">JavaScript can read this cookie, so a single XSS flaw turns into full session theft.</dd>
+    <dt>Fix</dt><dd>Add HttpOnly to all cookies that do not need to be read by client-side scripts.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Cookie without SameSite attribute (PHPSESSID)</span> <span class="fid">HS-402</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;PHPSESSID&#x27; does not set SameSite explicitly.</dd>
+    <dt>Impact</dt><dd class="muted">Cross-site requests may carry this cookie depending on the browser&#x27;s default, which keeps classic CSRF viable on older clients.</dd>
+    <dt>Fix</dt><dd>Set SameSite=Lax (or Strict for sensitive session cookies) explicitly.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Cookie scoped to a broad parent domain (PHPSESSID)</span> <span class="fid">HS-404</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;PHPSESSID&#x27; is scoped to the parent domain &#x27;localhost&#x27;, so every subdomain receives it.</dd>
+    <dt>Impact</dt><dd class="muted">A cookie scoped to the registrable domain is sent to every subdomain, so a compromised or attacker-controlled subdomain can read or overwrite it.</dd>
+    <dt>Fix</dt><dd>Drop the Domain attribute to make the cookie host-only, or use the __Host- prefix.</dd>
+    <dt>Template</dt><dd><pre>Set-Cookie: __Host-session=...; Secure; HttpOnly; SameSite=Lax; Path=/</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://www.rfc-editor.org/rfc/rfc6265" rel="noreferrer noopener" target="_blank">www.rfc-editor.org/rfc/rfc6265</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Server software version disclosed</span> <span class="fid">HS-500</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>server</code></dd>
+    <dt>Observed</dt><dd><code>HeaderSpecterDemo/1.0, nginx/1.18.0 (Ubuntu)</code></dd>
+    <dt>Detail</dt><dd>The Server header exposes a specific version: HeaderSpecterDemo/1.0, nginx/1.18.0 (Ubuntu).</dd>
+    <dt>Impact</dt><dd class="muted">Exact software versions let an attacker map the target to known CVEs without touching the application, speeding up reconnaissance.</dd>
+    <dt>Fix</dt><dd>Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).</dd>
+    <dt>Template</dt><dd><pre>Server: nginx</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://owasp.org/www-project-secure-headers/" rel="noreferrer noopener" target="_blank">owasp.org/www-project-secure-headers/</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Technology disclosed via X-Powered-By</span> <span class="fid">HS-501</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>x-powered-by</code></dd>
+    <dt>Observed</dt><dd><code>PHP/7.4.3</code></dd>
+    <dt>Detail</dt><dd>X-Powered-By discloses: PHP/7.4.3.</dd>
+    <dt>Impact</dt><dd class="muted">The header advertises the application stack and often its exact version, which is pure reconnaissance value for an attacker.</dd>
+    <dt>Fix</dt><dd>Remove the header (PHP: expose_php=Off; Express: app.disable(&#x27;x-powered-by&#x27;)).</dd>
+    
+    <dt>Reference</dt><dd><a class="pill" href="https://owasp.org/www-project-secure-headers/" rel="noreferrer noopener" target="_blank">owasp.org/www-project-secure-headers/</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Framework version headers exposed</span> <span class="fid">HS-502</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>x-aspnet-version</code></dd>
+    <dt>Observed</dt><dd><code>4.0.30319</code></dd>
+    <dt>Detail</dt><dd>X-AspNet-Version discloses the framework version: 4.0.30319.</dd>
+    <dt>Impact</dt><dd class="muted">ASP.NET/MVC version headers identify the exact framework build in use.</dd>
+    <dt>Fix</dt><dd>Remove them via &lt;httpRuntime enableVersionHeader=&quot;false&quot; /&gt; and MvcHandler.DisableMvcResponseHeader = true.</dd>
+    
+    <dt>Reference</dt><dd><a class="pill" href="https://owasp.org/www-project-secure-headers/" rel="noreferrer noopener" target="_blank">owasp.org/www-project-secure-headers/</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>X-XSS-Protection filtering enabled</span> <span class="fid">HS-511</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>x-xss-protection</code></dd>
+    <dt>Observed</dt><dd><code>1; mode=block</code></dd>
+    <dt>Detail</dt><dd>X-XSS-Protection is set to &#x27;1; mode=block&#x27;; the legacy auditor is removed from modern browsers and was itself a source of vulnerabilities.</dd>
+    <dt>Impact</dt><dd class="muted">Value &#x27;1&#x27; without mode=block enables legacy filtering that was itself exploitable for XS-leaks and content injection in older browsers.</dd>
+    <dt>Fix</dt><dd>Set X-XSS-Protection: 0 and deploy a CSP instead.</dd>
+    <dt>Template</dt><dd><pre>X-XSS-Protection: 0</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/X-XSS-Protection" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/X…</a></dd>
+  </dl>
+</article>
+<article class="finding low">
+  <h4><span class="badge low">LOW</span> <span>Potentially sensitive response is cacheable</span> <span class="fid">HS-601</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>cache-control</code></dd>
+    <dt>Observed</dt><dd><code>public, max-age=86400</code></dd>
+    <dt>Detail</dt><dd>The response sets cookies but does not use Cache-Control: no-store, so a shared cache may store user-specific content.</dd>
+    <dt>Impact</dt><dd class="muted">The response sets cookies or looks user-specific, yet allows shared/public caching, which can leak one user&#x27;s content to another via a proxy or CDN.</dd>
+    <dt>Fix</dt><dd>Send Cache-Control: no-store (plus private where appropriate) for user-specific responses.</dd>
+    <dt>Template</dt><dd><pre>Cache-Control: no-store, private</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Cache-Control" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding info">
+  <h4><span class="badge info">INFO</span> <span>HSTS preload not requested</span> <span class="fid">HS-004</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>strict-transport-security</code></dd>
+    <dt>Observed</dt><dd><code>max-age=300</code></dd>
+    <dt>Detail</dt><dd>The policy does not request HSTS preloading.</dd>
+    <dt>Impact</dt><dd class="muted">Without preloading, the very first visit from a fresh browser profile can still be made over HTTP (trust-on-first-use gap).</dd>
+    <dt>Fix</dt><dd>Once max-age &gt;= 31536000 and includeSubDomains is set, add the preload token and submit the domain at hstspreload.org. Preloading is hard to undo — plan first.</dd>
+    <dt>Template</dt><dd><pre>Strict-Transport-Security: max-age=31536000; includeSubDomains; preload</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://hstspreload.org/" rel="noreferrer noopener" target="_blank">hstspreload.org/</a></dd>
+  </dl>
+</article>
+<article class="finding info">
+  <h4><span class="badge info">INFO</span> <span>HSTS sent over plaintext HTTP</span> <span class="fid">HS-006</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>strict-transport-security</code></dd>
+    <dt>Observed</dt><dd><code>max-age=300</code></dd>
+    <dt>Detail</dt><dd>The HSTS header was returned over HTTP, where browsers ignore it.</dd>
+    <dt>Impact</dt><dd class="muted">HSTS headers received over HTTP are ignored by browsers, so the policy is not actually applied.</dd>
+    <dt>Fix</dt><dd>Redirect HTTP to HTTPS first and send the HSTS header on the HTTPS response.</dd>
+    
+    <dt>Reference</dt><dd><a class="pill" href="https://www.rfc-editor.org/rfc/rfc6797#section-8.1" rel="noreferrer noopener" target="_blank">www.rfc-editor.org/rfc/rfc6797#section-8.1</a></dd>
+  </dl>
+</article>
+<article class="finding info">
+  <h4><span class="badge info">INFO</span> <span>CSP uses deprecated report-uri only</span> <span class="fid">HS-120</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>content-security-policy</code></dd>
+    <dt>Observed</dt><dd><code>/csp-report</code></dd>
+    <dt>Detail</dt><dd>Only the deprecated report-uri directive is configured.</dd>
+    <dt>Impact</dt><dd class="muted">report-uri is deprecated in favour of the Reporting API; newer browsers prefer report-to and may drop report-uri support.</dd>
+    <dt>Fix</dt><dd>Keep report-uri for legacy clients but add report-to with a Reporting-Endpoints header.</dd>
+    <dt>Template</dt><dd><pre>Reporting-Endpoints: csp-endpoint=&quot;https://example.com/csp-reports&quot;</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/report-to" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding info">
+  <h4><span class="badge info">INFO</span> <span>Missing Cross-Origin-Embedder-Policy</span> <span class="fid">HS-304</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>cross-origin-embedder-policy</code></dd>
+    
+    <dt>Detail</dt><dd>No Cross-Origin-Embedder-Policy header was returned.</dd>
+    <dt>Impact</dt><dd class="muted">Without COEP the document cannot become cross-origin isolated, so powerful APIs (SharedArrayBuffer, high-resolution timers) stay disabled and Spectre-class mitigations are weaker.</dd>
+    <dt>Fix</dt><dd>Send Cross-Origin-Embedder-Policy: require-corp (or credentialless) together with COOP: same-origin when you need cross-origin isolation.</dd>
+    <dt>Template</dt><dd><pre>Cross-Origin-Embedder-Policy: require-corp</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/C…</a></dd>
+  </dl>
+</article>
+<article class="finding info">
+  <h4><span class="badge info">INFO</span> <span>Long-lived persistent cookie (tracking)</span> <span class="fid">HS-406</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>set-cookie</code></dd>
+    <dt>Observed</dt><dd><code>tracking=1; Path=/; Max-Age=63072000; SameSite=None</code></dd>
+    <dt>Detail</dt><dd>Cookie &#x27;tracking&#x27; persists for roughly 730 days.</dd>
+    <dt>Impact</dt><dd class="muted">Very long lifetimes extend the window in which a stolen cookie remains valid.</dd>
+    <dt>Fix</dt><dd>Prefer short-lived session cookies with server-side revocation for authentication state.</dd>
+    
+    <dt>Reference</dt><dd><a class="pill" href="https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie" rel="noreferrer noopener" target="_blank">developer.mozilla.org/docs/Web/HTTP/Headers/S…</a></dd>
+  </dl>
+</article>
+<article class="finding info">
+  <h4><span class="badge info">INFO</span> <span>Missing X-Permitted-Cross-Domain-Policies</span> <span class="fid">HS-516</span></h4>
+  <dl>
+    <dt>Header</dt><dd><code>x-permitted-cross-domain-policies</code></dd>
+    
+    <dt>Detail</dt><dd>X-Permitted-Cross-Domain-Policies was not returned.</dd>
+    <dt>Impact</dt><dd class="muted">Legacy Adobe clients fall back to looking for a /crossdomain.xml policy file.</dd>
+    <dt>Fix</dt><dd>Send X-Permitted-Cross-Domain-Policies: none (defence in depth, zero cost).</dd>
+    <dt>Template</dt><dd><pre>X-Permitted-Cross-Domain-Policies: none</pre></dd>
+    <dt>Reference</dt><dd><a class="pill" href="https://owasp.org/www-project-secure-headers/" rel="noreferrer noopener" target="_blank">owasp.org/www-project-secure-headers/</a></dd>
+  </dl>
+</article></section>
+<section><h2>Header Security</h2><div class="card"><table><thead><tr><th>Status</th><th>Header</th><th>Value / note</th></tr></thead><tbody><tr><td><span class="badge high">FAIL</span></td><td><code>Content-Security-Policy</code></td><td class='muted'>default-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;; script-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:; style-src * &#x27;unsafe-inline&#x27;; img-src *; fram…</td></tr><tr><td><span class="badge med">WARNING</span></td><td><code>Strict-Transport-Security</code></td><td class='muted'>max-age=300</td></tr><tr><td><span class="badge med">MISSING</span></td><td><code>X-Content-Type-Options</code></td><td class='muted'>MIME sniffing not disabled</td></tr><tr><td><span class="badge med">WARNING</span></td><td><code>X-Frame-Options</code></td><td class='muted'>ALLOW-FROM https://partner.example.com</td></tr><tr><td><span class="badge med">WARNING</span></td><td><code>Referrer-Policy</code></td><td class='muted'>unsafe-url</td></tr><tr><td><span class="badge low">MISSING</span></td><td><code>Permissions-Policy</code></td><td class='muted'>Browser feature defaults apply</td></tr><tr><td><span class="badge low">MISSING</span></td><td><code>Cross-Origin-Opener-Policy</code></td><td class='muted'>Browsing context not isolated</td></tr><tr><td><span class="badge low">MISSING</span></td><td><code>Cross-Origin-Resource-Policy</code></td><td class='muted'>Embedding not restricted</td></tr><tr><td><span class="badge info">MISSING</span></td><td><code>Cross-Origin-Embedder-Policy</code></td><td class='muted'>Not cross-origin isolated</td></tr><tr><td><span class="badge high">FAIL</span></td><td><code>Access-Control-Allow-Origin</code></td><td class='muted'>*</td></tr><tr><td><span class="badge low">DEPRECATED</span></td><td><code>X-XSS-Protection</code></td><td class='muted'>1; mode=block</td></tr><tr><td><span class="badge info">MISSING</span></td><td><code>X-Permitted-Cross-Domain-Policies</code></td><td class='muted'>Legacy Adobe clients fall back to crossdomain.xml</td></tr></tbody></table></div></section>
+<section><h2>Content-Security-Policy</h2>
+<div class="card">
+  <table><thead><tr><th>Status</th><th>Check</th><th>Detail</th></tr></thead><tbody><tr><td><span class="badge pass">PASS</span></td><td><strong>Enforcement</strong></td><td class='muted'>Enforcing policy present</td></tr><tr><td><span class="badge high">HIGH</span></td><td><strong>&#x27;unsafe-inline&#x27; (scripts)</strong></td><td class='muted'>detected</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><strong>&#x27;unsafe-eval&#x27;</strong></td><td class='muted'>detected</td></tr><tr><td><span class="badge low">LOW</span></td><td><strong>&#x27;unsafe-inline&#x27; (styles)</strong></td><td class='muted'>detected</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><strong>Wildcard sources</strong></td><td class='muted'>default-src, frame-ancestors, img-src, script-src, style-src</td></tr><tr><td><span class="badge high">HIGH</span></td><td><strong>Dangerous schemes</strong></td><td class='muted'>script-src: data:</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><strong>default-src</strong></td><td class='muted'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; — permissive fallback</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><strong>object-src</strong></td><td class='muted'>not restricted to &#x27;none&#x27;</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><strong>base-uri</strong></td><td class='muted'>missing</td></tr><tr><td><span class="badge pass">PASS</span></td><td><strong>frame-ancestors</strong></td><td class='muted'>*</td></tr><tr><td><span class="badge low">LOW</span></td><td><strong>form-action</strong></td><td class='muted'>missing</td></tr><tr><td><span class="badge info">INFO</span></td><td><strong>Violation reporting</strong></td><td class='muted'>report-uri only (deprecated)</td></tr><tr><td><span class="badge pass">PASS</span></td><td><strong>Allow-list size</strong></td><td class='muted'>1 host source(s)</td></tr></tbody></table>
+  <h3>Directives</h3>
+  <table><thead><tr><th>Status</th><th>Directive</th><th>Value</th><th>Note</th></tr></thead>
+  <tbody><tr><td><span class="badge high">HIGH</span></td><td><code>default-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>wildcard source</td></tr><tr><td><span class="badge high">HIGH</span></td><td><code>script-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:</td><td class='muted'>wildcard source</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><code>style-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27;</td><td class='muted'>wildcard source</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><code>img-src</code></td><td class='mono'>*</td><td class='muted'>wildcard source</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>font-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>connect-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>frame-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>object-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>media-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>manifest-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>worker-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge info">INFO</span></td><td><code>child-src</code></td><td class='mono'>* &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;</td><td class='muted'>inherited from default-src</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><code>base-uri</code></td><td class='mono'>—</td><td class='muted'>not set</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><code>form-action</code></td><td class='mono'>—</td><td class='muted'>not set</td></tr><tr><td><span class="badge high">HIGH</span></td><td><code>frame-ancestors</code></td><td class='mono'>*</td><td class='muted'>wildcard source</td></tr><tr><td><span class="badge pass">PASS</span></td><td><code>report-uri</code></td><td class='mono'>/csp-report</td><td class='muted'>explicit policy</td></tr></tbody></table>
+  <h3>Policy</h3>
+  <pre>default-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;; script-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:; style-src * &#x27;unsafe-inline&#x27;; img-src *; frame-ancestors *; report-uri /csp-report</pre>
+</div>
+</section>
+<section><h2>Cookies</h2>
+<div class="card">
+  <table>
+    <thead><tr><th>Status</th><th>Cookie</th><th>Secure</th><th>HttpOnly</th><th>SameSite</th><th>Domain</th><th>Issues</th></tr></thead>
+    <tbody><tr><td><span class="badge high">HIGH</span></td><td><code>PHPSESSID</code></td><td><strong>no</strong></td><td><strong>no</strong></td><td>not set</td><td class='muted'>localhost</td><td class='muted'>set over HTTP, missing Secure, missing HttpOnly, missing SameSite, broad Domain scope</td></tr><tr><td><span class="badge high">HIGH</span></td><td><code>tracking</code></td><td><strong>no</strong></td><td><strong>no</strong></td><td>None</td><td class='muted'>—</td><td class='muted'>set over HTTP, missing Secure, missing HttpOnly, SameSite=None without Secure, long lifetime (~730 days)</td></tr></tbody>
+  </table>
+  <p class="muted" style="margin-bottom:0">Cookie values are redacted; only attribute metadata is stored in this report.</p>
+</div>
+</section>
+<section><h2>CORS</h2><div class='card'><table><thead><tr><th>Status</th><th>Check</th><th>Detail</th></tr></thead><tbody><tr><td><span class="badge high">HIGH</span></td><td><strong>Allow-Origin</strong></td><td class='muted'>* with credentials — invalid and unsafe</td></tr><tr><td><span class="badge med">MEDIUM</span></td><td><strong>Allow-Credentials</strong></td><td class='muted'>true — responses are readable by the allowed origin with cookies attached</td></tr><tr><td><span class="badge low">LOW</span></td><td><strong>Allow-Methods</strong></td><td class='muted'>DELETE, GET, POST, PUT, TRACE</td></tr><tr><td><span class="badge low">LOW</span></td><td><strong>Allow-Headers</strong></td><td class='muted'>* (any request header)</td></tr></tbody></table></div></section>
+<section><h2>TLS</h2><div class='card'><table><thead><tr><th>Status</th><th>Check</th><th>Detail</th></tr></thead><tbody><tr><td><span class="badge high">HIGH</span></td><td><strong>HTTPS</strong></td><td class='muted'>not in use — traffic is sent in clear text</td></tr></tbody></table></div></section>
+<section><h2>Redirect Chain</h2><div class='card'><p class='muted'>No redirects — the target responded directly.</p></div></section>
+<section><h2>Technology Disclosure</h2>
+<div class="card">
+  <table><thead><tr><th>Severity</th><th>Header</th><th>Value</th><th>Observation</th></tr></thead>
+  <tbody><tr><td><span class="badge low">LOW</span></td><td><code>Server</code></td><td class='mono'>HeaderSpecterDemo/1.0, nginx/1.18.0 (Ubuntu)</td><td class='muted'>Version disclosed</td></tr><tr><td><span class="badge low">LOW</span></td><td><code>X-Powered-By</code></td><td class='mono'>PHP/7.4.3</td><td class='muted'>Application stack disclosed</td></tr><tr><td><span class="badge low">LOW</span></td><td><code>X-AspNet-Version</code></td><td class='mono'>4.0.30319</td><td class='muted'>Framework version disclosed</td></tr></tbody></table>
+  <p class="muted" style="margin-bottom:0">Information disclosure observations — they reduce attacker effort but are not vulnerabilities on their own.</p>
+</div>
+</section>
+<section><h2>Recommendations</h2><div class="card"><ol><li>Terminate TLS for this host and permanently redirect HTTP to HTTPS.</li><li>Move inline scripts to external files, or adopt a nonce/hash based strict CSP with &#x27;strict-dynamic&#x27; for third-party loaders.</li><li>Replace &#x27;*&#x27; with the explicit origins the application actually needs.</li><li>Remove data:/blob: from script-src and object-src; keep them only for img-src or media where genuinely required.</li><li>Set frame-ancestors &#x27;none&#x27; or list the specific origins allowed to embed the page.</li><li>Never combine credentials with a wildcard.</li><li>Add the Secure attribute to every cookie and serve the site exclusively over HTTPS.</li><li>Always pair SameSite=None with Secure, and question whether cross-site delivery is really needed.</li></ol></div></section>
+<section>
+  <h2>Raw Headers &amp; Metadata</h2>
+  <details><summary>Raw response head</summary><pre>HTTP/1.0 200 OK
+server: HeaderSpecterDemo/1.0
+date: Fri, 25 Sep 2026 12:09:47 GMT
+content-type: text/html; charset=utf-8
+content-length: 210
+content-security-policy: default-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27;; script-src * &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; data:; style-src * &#x27;unsafe-inline&#x27;; img-src *; frame-ancestors *; report-uri /csp-report
+strict-transport-security: max-age=300
+x-frame-options: ALLOW-FROM https://partner.example.com
+x-xss-protection: 1; mode=block
+referrer-policy: unsafe-url
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET, POST, PUT, DELETE, TRACE
+access-control-allow-headers: *
+server: nginx/1.18.0 (Ubuntu)
+x-powered-by: PHP/7.4.3
+x-aspnet-version: 4.0.30319
+cache-control: public, max-age=86400
+set-cookie: PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost
+set-cookie: tracking=1; Path=/; Max-Age=63072000; SameSite=None</pre></details>
+  <details style="margin-top:12px"><summary>Scan metadata</summary>
+    <table><tbody>
+      <tr><td>Requested URL</td><td class="mono">http://127.0.0.1:8080/weak</td></tr>
+      <tr><td>Final URL</td><td class="mono">http://127.0.0.1:8080/weak</td></tr>
+      <tr><td>HTTP version</td><td class="mono">HTTP/1.0</td></tr>
+      <tr><td>Scanned at</td><td class="mono">2026-09-25T12:09:47+00:00</td></tr>
+      <tr><td>Policy</td><td class="mono">built-in defaults</td></tr>
+      <tr><td>scanner</td><td class='mono'>httpx</td></tr><tr><td>proxy</td><td class='mono'></td></tr><tr><td>user_agent</td><td class='mono'>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0</td></tr><tr><td>body_bytes_read</td><td class='mono'>210</td></tr><tr><td>total_ms</td><td class='mono'>24.58</td></tr><tr><td>probes</td><td class='mono'>[&#x27;cors&#x27;]</td></tr>
+    </tbody></table>
+  </details>
+</section>
+
+  <footer>
+    <div>HeaderSpecter v1.0.0 · <a href="https://github.com/mrdineshpathro-dot/HeaderSpecter" rel="noreferrer noopener">https://github.com/mrdineshpathro-dot/HeaderSpecter</a></div>
+    <div>Authorised security testing only · Mr Dinesh Pathro · <a href="https://buymeacoffee.com/mrdineshpathro" rel="noreferrer noopener">buy me a coffee</a></div>
+  </footer>
+</div>
+</body>
+</html>

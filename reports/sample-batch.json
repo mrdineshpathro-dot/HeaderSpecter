@@ -1,0 +1,4958 @@
+{
+  "tool": "HeaderSpecter",
+  "version": "1.0.0",
+  "author": "Mr Dinesh Pathro",
+  "author_url": "https://buymeacoffee.com/mrdineshpathro",
+  "generated_at": "2026-09-25T12:09:48+00:00",
+  "target_count": 5,
+  "average_score": 38.4,
+  "results": [
+    {
+      "tool": "HeaderSpecter",
+      "version": "1.0.0",
+      "schema": 1,
+      "target": "http://127.0.0.1:8080/",
+      "url": "http://127.0.0.1:8080/",
+      "final_url": "http://127.0.0.1:8080/",
+      "scanned_at": "2026-09-25T12:09:48+00:00",
+      "status_code": 200,
+      "reason": "OK",
+      "http_version": "HTTP/1.0",
+      "elapsed_ms": 29.31,
+      "ok": true,
+      "error": null,
+      "error_kind": null,
+      "hint": null,
+      "score": 71.6,
+      "grade": "C",
+      "headers": [
+        {
+          "name": "server",
+          "value": "HeaderSpecterDemo/1.0"
+        },
+        {
+          "name": "date",
+          "value": "Fri, 25 Sep 2026 12:09:48 GMT"
+        },
+        {
+          "name": "content-type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "name": "content-length",
+          "value": "210"
+        },
+        {
+          "name": "content-security-policy",
+          "value": "default-src 'self'; script-src 'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint"
+        },
+        {
+          "name": "strict-transport-security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "name": "x-content-type-options",
+          "value": "nosniff"
+        },
+        {
+          "name": "x-frame-options",
+          "value": "DENY"
+        },
+        {
+          "name": "referrer-policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "name": "permissions-policy",
+          "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "name": "cross-origin-opener-policy",
+          "value": "same-origin"
+        },
+        {
+          "name": "cross-origin-resource-policy",
+          "value": "same-origin"
+        },
+        {
+          "name": "cross-origin-embedder-policy",
+          "value": "require-corp"
+        },
+        {
+          "name": "x-permitted-cross-domain-policies",
+          "value": "none"
+        },
+        {
+          "name": "cache-control",
+          "value": "no-store"
+        },
+        {
+          "name": "reporting-endpoints",
+          "value": "csp-endpoint=\"https://example.com/csp-reports\""
+        },
+        {
+          "name": "set-cookie",
+          "value": "__Host-session=7f3c9a2b; Path=/; Secure; HttpOnly; SameSite=Lax"
+        }
+      ],
+      "request_headers": {
+        "host": "127.0.0.1:8080",
+        "connection": "keep-alive",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US,en;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "cache-control": "no-cache",
+        "pragma": "no-cache",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0"
+      },
+      "http_probe": null,
+      "analysis": {
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 2,
+          "MEDIUM": 0,
+          "LOW": 1,
+          "INFO": 1,
+          "PASS": 0
+        },
+        "score": {
+          "score": 71.6,
+          "base_score": 100.0,
+          "grade": "C",
+          "total_deducted": 32.4,
+          "total_bonus": 5.0,
+          "counts": {
+            "CRITICAL": 0,
+            "HIGH": 2,
+            "MEDIUM": 0,
+            "LOW": 1,
+            "INFO": 1,
+            "PASS": 0
+          },
+          "category_totals": {
+            "transport": 15.6,
+            "cookies": 15.0,
+            "disclosure": 1.8
+          },
+          "deductions": [
+            {
+              "finding_id": "HS-007",
+              "title": "Target served over plaintext HTTP",
+              "severity": "HIGH",
+              "category": "transport",
+              "header": null,
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-407",
+              "title": "Cookie set over plaintext HTTP (__Host-session)",
+              "severity": "HIGH",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-500",
+              "title": "Server software version disclosed",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "server",
+              "raw_points": 1.8,
+              "applied_points": 1.8,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-006",
+              "title": "HSTS sent over plaintext HTTP",
+              "severity": "INFO",
+              "category": "transport",
+              "header": "strict-transport-security",
+              "raw_points": 0.6,
+              "applied_points": 0.6,
+              "capped": false
+            }
+          ],
+          "bonuses": [
+            {
+              "key": "hsts_preload",
+              "reason": "HSTS policy requests preloading",
+              "points": 1.5
+            },
+            {
+              "key": "csp_nonce_or_hash",
+              "reason": "CSP uses nonces or hashes instead of 'unsafe-inline'",
+              "points": 2.0
+            },
+            {
+              "key": "cross_origin_isolated",
+              "reason": "Document is cross-origin isolated (COOP + COEP)",
+              "points": 1.5
+            }
+          ]
+        },
+        "header_checks": [
+          {
+            "header": "Content-Security-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "default-src 'self'; script-src 'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint",
+            "note": "Strict nonce-based policy"
+          },
+          {
+            "header": "Strict-Transport-Security",
+            "status": "INFO",
+            "state": "INFO",
+            "value": "max-age=63072000; includeSubDomains; preload",
+            "note": "Policy can be strengthened"
+          },
+          {
+            "header": "X-Content-Type-Options",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "nosniff",
+            "note": "MIME sniffing disabled"
+          },
+          {
+            "header": "X-Frame-Options",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "DENY",
+            "note": "DENY — legacy control"
+          },
+          {
+            "header": "Referrer-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "strict-origin-when-cross-origin",
+            "note": "Effective policy: strict-origin-when-cross-origin"
+          },
+          {
+            "header": "Permissions-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+            "note": "9 directive(s), 0 unrestricted"
+          },
+          {
+            "header": "Cross-Origin-Opener-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "same-origin",
+            "note": "Browsing context isolated"
+          },
+          {
+            "header": "Cross-Origin-Resource-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "same-origin",
+            "note": "Embedding restricted"
+          },
+          {
+            "header": "Cross-Origin-Embedder-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "require-corp",
+            "note": "Isolation capable"
+          }
+        ],
+        "extra_checks": [
+          {
+            "header": "Access-Control-Allow-Origin",
+            "status": "PASS",
+            "state": "PASS",
+            "value": null,
+            "note": "No cross-origin sharing configured"
+          },
+          {
+            "header": "X-Permitted-Cross-Domain-Policies",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "none",
+            "note": "Policy files denied"
+          }
+        ],
+        "findings": [
+          {
+            "id": "HS-007",
+            "title": "Target served over plaintext HTTP",
+            "severity": "HIGH",
+            "category": "transport",
+            "header": null,
+            "value": "http://127.0.0.1:8080/",
+            "reason": "The target was served over plaintext HTTP (http://127.0.0.1:8080/); no transport encryption protects the response or its cookies.",
+            "impact": "All traffic — including cookies, tokens and form data — is transmitted in the clear and can be read or modified by anyone on the network path.",
+            "recommendation": "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-407",
+            "title": "Cookie set over plaintext HTTP (__Host-session)",
+            "severity": "HIGH",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "__Host-session=7f3c9a2b; Path=/; Secure; HttpOnly; SameSite=Lax",
+            "reason": "Cookie '__Host-session' was set over a plaintext HTTP response.",
+            "impact": "The cookie was delivered over an unencrypted channel and can be read by anyone on the path, regardless of its attributes.",
+            "recommendation": "Serve the application over HTTPS only and set cookies from HTTPS responses.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "__Host-session"
+            }
+          },
+          {
+            "id": "HS-500",
+            "title": "Server software version disclosed",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "server",
+            "value": "HeaderSpecterDemo/1.0",
+            "reason": "The Server header exposes a specific version: HeaderSpecterDemo/1.0.",
+            "impact": "Exact software versions let an attacker map the target to known CVEs without touching the application, speeding up reconnaissance.",
+            "recommendation": "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+            "remediation": "Server: nginx",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-006",
+            "title": "HSTS sent over plaintext HTTP",
+            "severity": "INFO",
+            "category": "transport",
+            "header": "strict-transport-security",
+            "value": "max-age=63072000; includeSubDomains; preload",
+            "reason": "The HSTS header was returned over HTTP, where browsers ignore it.",
+            "impact": "HSTS headers received over HTTP are ignored by browsers, so the policy is not actually applied.",
+            "recommendation": "Redirect HTTP to HTTPS first and send the HSTS header on the HTTPS response.",
+            "remediation": null,
+            "references": [
+              "https://www.rfc-editor.org/rfc/rfc6797#section-8.1"
+            ],
+            "metadata": {}
+          }
+        ],
+        "csp": {
+          "present": true,
+          "enforced": true,
+          "report_only_present": false,
+          "raw": "default-src 'self'; script-src 'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint",
+          "directives": {
+            "default-src": [
+              "'self'"
+            ],
+            "script-src": [
+              "'self'",
+              "'nonce-r4nd0mBASE64value123456'",
+              "'strict-dynamic'"
+            ],
+            "style-src": [
+              "'self'"
+            ],
+            "img-src": [
+              "'self'",
+              "data:"
+            ],
+            "font-src": [
+              "'self'"
+            ],
+            "connect-src": [
+              "'self'"
+            ],
+            "object-src": [
+              "'none'"
+            ],
+            "base-uri": [
+              "'self'"
+            ],
+            "form-action": [
+              "'self'"
+            ],
+            "frame-ancestors": [
+              "'none'"
+            ],
+            "upgrade-insecure-requests": [],
+            "report-to": [
+              "csp-endpoint"
+            ]
+          },
+          "uses_nonce": true,
+          "uses_hash": false,
+          "strict_dynamic": true,
+          "strict": true,
+          "host_sources": [
+            "csp-endpoint"
+          ],
+          "frame_ancestors": [
+            "'none'"
+          ],
+          "checks": [
+            {
+              "label": "Enforcement",
+              "status": "PASS",
+              "detail": "Enforcing policy present"
+            },
+            {
+              "label": "'unsafe-inline' (scripts)",
+              "status": "PASS",
+              "detail": "not allowed"
+            },
+            {
+              "label": "'unsafe-eval'",
+              "status": "PASS",
+              "detail": "not allowed"
+            },
+            {
+              "label": "Script policy style",
+              "status": "PASS",
+              "detail": "nonce-based policy with 'strict-dynamic'"
+            },
+            {
+              "label": "Wildcard sources",
+              "status": "PASS",
+              "detail": "none detected"
+            },
+            {
+              "label": "default-src",
+              "status": "PASS",
+              "detail": "'self'"
+            },
+            {
+              "label": "object-src",
+              "status": "PASS",
+              "detail": "'none' — plugin content blocked"
+            },
+            {
+              "label": "base-uri",
+              "status": "PASS",
+              "detail": "'self'"
+            },
+            {
+              "label": "frame-ancestors",
+              "status": "PASS",
+              "detail": "'none'"
+            },
+            {
+              "label": "form-action",
+              "status": "PASS",
+              "detail": "'self'"
+            },
+            {
+              "label": "Violation reporting",
+              "status": "PASS",
+              "detail": "csp-endpoint"
+            },
+            {
+              "label": "Allow-list size",
+              "status": "PASS",
+              "detail": "1 host source(s)"
+            }
+          ],
+          "directive_rows": [
+            {
+              "directive": "default-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "script-src",
+              "value": "'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "style-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "img-src",
+              "value": "'self' data:",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "font-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "connect-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "frame-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "object-src",
+              "value": "'none'",
+              "status": "PASS",
+              "note": "blocked"
+            },
+            {
+              "directive": "media-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "manifest-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "worker-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "child-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "base-uri",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "form-action",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "frame-ancestors",
+              "value": "'none'",
+              "status": "PASS",
+              "note": "blocked"
+            },
+            {
+              "directive": "upgrade-insecure-requests",
+              "value": "enabled",
+              "status": "PASS",
+              "note": "mixed-content mitigation"
+            },
+            {
+              "directive": "report-to",
+              "value": "csp-endpoint",
+              "status": "PASS",
+              "note": "explicit policy"
+            }
+          ]
+        },
+        "hsts": {
+          "present": true,
+          "raw": "max-age=63072000; includeSubDomains; preload",
+          "max_age": 63072000,
+          "include_subdomains": true,
+          "preload": true,
+          "valid": true,
+          "rows": [
+            {
+              "label": "Header present",
+              "status": "PASS",
+              "detail": "max-age=63072000; includeSubDomains; preload"
+            },
+            {
+              "label": "Applied by browsers",
+              "status": "INFO",
+              "detail": "ignored over plaintext HTTP"
+            },
+            {
+              "label": "max-age",
+              "status": "PASS",
+              "detail": "63072000 s"
+            },
+            {
+              "label": "includeSubDomains",
+              "status": "PASS",
+              "detail": "present"
+            },
+            {
+              "label": "preload",
+              "status": "PASS",
+              "detail": "requested"
+            }
+          ]
+        },
+        "permissions_policy": {
+          "present": true,
+          "raw": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+          "directives": {
+            "accelerometer": [],
+            "camera": [],
+            "geolocation": [],
+            "gyroscope": [],
+            "magnetometer": [],
+            "microphone": [],
+            "payment": [],
+            "usb": [],
+            "interest-cohort": []
+          },
+          "unrestricted": [],
+          "restricted": [
+            "accelerometer",
+            "camera",
+            "geolocation",
+            "gyroscope",
+            "magnetometer",
+            "microphone",
+            "payment",
+            "usb",
+            "interest-cohort"
+          ],
+          "malformed": []
+        },
+        "cross_origin": {
+          "coop": "same-origin",
+          "corp": "same-origin",
+          "coep": "require-corp",
+          "cross_origin_isolated": true
+        },
+        "cookies": {
+          "count": 1,
+          "insecure_count": 1,
+          "cookies": [
+            {
+              "name": "__Host-session",
+              "value_preview": "7f3c…(8 chars, redacted)",
+              "secure": true,
+              "http_only": true,
+              "same_site": "Lax",
+              "domain": null,
+              "path": "/",
+              "max_age": null,
+              "expires": null,
+              "lifetime_seconds": null,
+              "prefix": "__Host-",
+              "session_like": true,
+              "source": "response",
+              "status": "HIGH",
+              "issues": [
+                "set over HTTP"
+              ]
+            }
+          ]
+        },
+        "cors": {
+          "present": false,
+          "allow_origin": null,
+          "allow_credentials": false,
+          "allow_methods": [],
+          "allow_headers": [],
+          "expose_headers": [],
+          "max_age": null,
+          "vary_origin": false,
+          "reflects_origin": false,
+          "probe_origin": "https://headerspecter.invalid",
+          "probe_performed": true,
+          "checks": [
+            {
+              "label": "CORS headers",
+              "status": "PASS",
+              "detail": "none returned — resource is same-origin only"
+            }
+          ]
+        },
+        "redirects": {
+          "count": 0,
+          "upgraded_to_https": false,
+          "downgraded_to_http": false,
+          "cross_host": false,
+          "looped": false,
+          "final_url": "http://127.0.0.1:8080/",
+          "final_status": 200,
+          "hops": []
+        },
+        "tls": null,
+        "tls_checks": [
+          {
+            "label": "HTTPS",
+            "status": "HIGH",
+            "detail": "not in use — traffic is sent in clear text"
+          }
+        ],
+        "framing_checks": [
+          {
+            "label": "X-Frame-Options",
+            "status": "PASS",
+            "detail": "DENY (LEGACY header, still honoured)"
+          },
+          {
+            "label": "XFO vs frame-ancestors",
+            "status": "PASS",
+            "detail": "consistent"
+          }
+        ],
+        "caching_checks": [
+          {
+            "label": "Cache-Control",
+            "status": "PASS",
+            "detail": "no-store"
+          }
+        ],
+        "disclosure": [
+          {
+            "header": "Server",
+            "value": "HeaderSpecterDemo/1.0",
+            "severity": "LOW",
+            "note": "Version disclosed"
+          }
+        ],
+        "recommendations": [
+          "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+          "Serve the application over HTTPS only and set cookies from HTTPS responses.",
+          "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+          "Redirect HTTP to HTTPS first and send the HSTS header on the HTTPS response."
+        ],
+        "policy": null
+      },
+      "meta": {
+        "scanner": "httpx",
+        "proxy": null,
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0",
+        "body_bytes_read": 210,
+        "total_ms": 38.79,
+        "probes": [
+          "cors"
+        ]
+      }
+    },
+    {
+      "tool": "HeaderSpecter",
+      "version": "1.0.0",
+      "schema": 1,
+      "target": "http://127.0.0.1:8080/weak",
+      "url": "http://127.0.0.1:8080/weak",
+      "final_url": "http://127.0.0.1:8080/weak",
+      "scanned_at": "2026-09-25T12:09:48+00:00",
+      "status_code": 200,
+      "reason": "OK",
+      "http_version": "HTTP/1.0",
+      "elapsed_ms": 7.76,
+      "ok": true,
+      "error": null,
+      "error_kind": null,
+      "hint": null,
+      "score": 0.0,
+      "grade": "F",
+      "headers": [
+        {
+          "name": "server",
+          "value": "HeaderSpecterDemo/1.0"
+        },
+        {
+          "name": "date",
+          "value": "Fri, 25 Sep 2026 12:09:48 GMT"
+        },
+        {
+          "name": "content-type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "name": "content-length",
+          "value": "210"
+        },
+        {
+          "name": "content-security-policy",
+          "value": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; img-src *; frame-ancestors *; report-uri /csp-report"
+        },
+        {
+          "name": "strict-transport-security",
+          "value": "max-age=300"
+        },
+        {
+          "name": "x-frame-options",
+          "value": "ALLOW-FROM https://partner.example.com"
+        },
+        {
+          "name": "x-xss-protection",
+          "value": "1; mode=block"
+        },
+        {
+          "name": "referrer-policy",
+          "value": "unsafe-url"
+        },
+        {
+          "name": "access-control-allow-origin",
+          "value": "*"
+        },
+        {
+          "name": "access-control-allow-credentials",
+          "value": "true"
+        },
+        {
+          "name": "access-control-allow-methods",
+          "value": "GET, POST, PUT, DELETE, TRACE"
+        },
+        {
+          "name": "access-control-allow-headers",
+          "value": "*"
+        },
+        {
+          "name": "server",
+          "value": "nginx/1.18.0 (Ubuntu)"
+        },
+        {
+          "name": "x-powered-by",
+          "value": "PHP/7.4.3"
+        },
+        {
+          "name": "x-aspnet-version",
+          "value": "4.0.30319"
+        },
+        {
+          "name": "cache-control",
+          "value": "public, max-age=86400"
+        },
+        {
+          "name": "set-cookie",
+          "value": "PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost"
+        },
+        {
+          "name": "set-cookie",
+          "value": "tracking=1; Path=/; Max-Age=63072000; SameSite=None"
+        }
+      ],
+      "request_headers": {
+        "host": "127.0.0.1:8080",
+        "connection": "keep-alive",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US,en;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "cache-control": "no-cache",
+        "pragma": "no-cache",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0"
+      },
+      "http_probe": null,
+      "analysis": {
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 11,
+          "MEDIUM": 11,
+          "LOW": 16,
+          "INFO": 6,
+          "PASS": 0
+        },
+        "score": {
+          "score": 0.0,
+          "base_score": 100.0,
+          "grade": "F",
+          "total_deducted": 147.8,
+          "total_bonus": 0,
+          "counts": {
+            "CRITICAL": 0,
+            "HIGH": 11,
+            "MEDIUM": 11,
+            "LOW": 16,
+            "INFO": 6,
+            "PASS": 0
+          },
+          "category_totals": {
+            "transport": 28.2,
+            "csp": 32.0,
+            "cors": 22.5,
+            "cookies": 24.0,
+            "framing": 7.0,
+            "content": 7.0,
+            "referrer": 6.3,
+            "permissions": 2.55,
+            "cross-origin": 5.15,
+            "disclosure": 7.1,
+            "deprecated": 3.0,
+            "caching": 3.0
+          },
+          "deductions": [
+            {
+              "finding_id": "HS-007",
+              "title": "Target served over plaintext HTTP",
+              "severity": "HIGH",
+              "category": "transport",
+              "header": null,
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-101",
+              "title": "CSP allows 'unsafe-inline' scripts",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 18.75,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-103",
+              "title": "CSP directive uses a wildcard source",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 13.25,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-103",
+              "title": "CSP directive uses a wildcard source",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-109",
+              "title": "CSP allows a dangerous scheme source",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-117",
+              "title": "CSP frame-ancestors allows any origin",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-311",
+              "title": "CORS wildcard combined with credentials",
+              "severity": "HIGH",
+              "category": "cors",
+              "header": "access-control-allow-origin",
+              "raw_points": 16.5,
+              "applied_points": 16.5,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-400",
+              "title": "Cookie without Secure attribute (PHPSESSID)",
+              "severity": "HIGH",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-403",
+              "title": "SameSite=None cookie without Secure (tracking)",
+              "severity": "HIGH",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 15.0,
+              "applied_points": 9.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-407",
+              "title": "Cookie set over plaintext HTTP (PHPSESSID)",
+              "severity": "HIGH",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 15.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-407",
+              "title": "Cookie set over plaintext HTTP (tracking)",
+              "severity": "HIGH",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 15.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-002",
+              "title": "HSTS max-age is too short",
+              "severity": "MEDIUM",
+              "category": "transport",
+              "header": "strict-transport-security",
+              "raw_points": 8.4,
+              "applied_points": 8.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-102",
+              "title": "CSP allows 'unsafe-eval'",
+              "severity": "MEDIUM",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 8.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-103",
+              "title": "CSP directive uses a wildcard source",
+              "severity": "MEDIUM",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 8.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-103",
+              "title": "CSP directive uses a wildcard source",
+              "severity": "MEDIUM",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 8.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-104",
+              "title": "CSP does not restrict object-src",
+              "severity": "MEDIUM",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 8.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-105",
+              "title": "CSP does not restrict base-uri",
+              "severity": "MEDIUM",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 8.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-202",
+              "title": "X-Frame-Options uses obsolete ALLOW-FROM",
+              "severity": "MEDIUM",
+              "category": "framing",
+              "header": "x-frame-options",
+              "raw_points": 7.0,
+              "applied_points": 7.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-210",
+              "title": "Missing X-Content-Type-Options",
+              "severity": "MEDIUM",
+              "category": "content",
+              "header": "x-content-type-options",
+              "raw_points": 7.0,
+              "applied_points": 7.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-221",
+              "title": "Weak Referrer-Policy value",
+              "severity": "MEDIUM",
+              "category": "referrer",
+              "header": "referrer-policy",
+              "raw_points": 6.3,
+              "applied_points": 6.3,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-400",
+              "title": "Cookie without Secure attribute (tracking)",
+              "severity": "MEDIUM",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 7.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-401",
+              "title": "Cookie without HttpOnly attribute (PHPSESSID)",
+              "severity": "MEDIUM",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 7.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-003",
+              "title": "HSTS does not cover subdomains",
+              "severity": "LOW",
+              "category": "transport",
+              "header": "strict-transport-security",
+              "raw_points": 3.6,
+              "applied_points": 3.6,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-113",
+              "title": "CSP style-src allows 'unsafe-inline'",
+              "severity": "LOW",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 3.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-114",
+              "title": "CSP does not restrict form-action",
+              "severity": "LOW",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 3.75,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-230",
+              "title": "Missing Permissions-Policy",
+              "severity": "LOW",
+              "category": "permissions",
+              "header": "permissions-policy",
+              "raw_points": 2.55,
+              "applied_points": 2.55,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-300",
+              "title": "Missing Cross-Origin-Opener-Policy",
+              "severity": "LOW",
+              "category": "cross-origin",
+              "header": "cross-origin-opener-policy",
+              "raw_points": 2.4,
+              "applied_points": 2.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-302",
+              "title": "Missing Cross-Origin-Resource-Policy",
+              "severity": "LOW",
+              "category": "cross-origin",
+              "header": "cross-origin-resource-policy",
+              "raw_points": 2.4,
+              "applied_points": 2.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-316",
+              "title": "CORS allows unsafe methods broadly",
+              "severity": "LOW",
+              "category": "cors",
+              "header": "access-control-allow-methods",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-317",
+              "title": "CORS allows arbitrary request headers",
+              "severity": "LOW",
+              "category": "cors",
+              "header": "access-control-allow-headers",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-401",
+              "title": "Cookie without HttpOnly attribute (tracking)",
+              "severity": "LOW",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 3.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-402",
+              "title": "Cookie without SameSite attribute (PHPSESSID)",
+              "severity": "LOW",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 3.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-404",
+              "title": "Cookie scoped to a broad parent domain (PHPSESSID)",
+              "severity": "LOW",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 3.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-500",
+              "title": "Server software version disclosed",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "server",
+              "raw_points": 1.8,
+              "applied_points": 1.8,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-501",
+              "title": "Technology disclosed via X-Powered-By",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "x-powered-by",
+              "raw_points": 1.8,
+              "applied_points": 1.8,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-502",
+              "title": "Framework version headers exposed",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "x-aspnet-version",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-511",
+              "title": "X-XSS-Protection filtering enabled",
+              "severity": "LOW",
+              "category": "deprecated",
+              "header": "x-xss-protection",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-601",
+              "title": "Potentially sensitive response is cacheable",
+              "severity": "LOW",
+              "category": "caching",
+              "header": "cache-control",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-004",
+              "title": "HSTS preload not requested",
+              "severity": "INFO",
+              "category": "transport",
+              "header": "strict-transport-security",
+              "raw_points": 0.6,
+              "applied_points": 0.6,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-006",
+              "title": "HSTS sent over plaintext HTTP",
+              "severity": "INFO",
+              "category": "transport",
+              "header": "strict-transport-security",
+              "raw_points": 0.6,
+              "applied_points": 0.6,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-120",
+              "title": "CSP uses deprecated report-uri only",
+              "severity": "INFO",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 0.62,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-304",
+              "title": "Missing Cross-Origin-Embedder-Policy",
+              "severity": "INFO",
+              "category": "cross-origin",
+              "header": "cross-origin-embedder-policy",
+              "raw_points": 0.35,
+              "applied_points": 0.35,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-406",
+              "title": "Long-lived persistent cookie (tracking)",
+              "severity": "INFO",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 0.5,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-516",
+              "title": "Missing X-Permitted-Cross-Domain-Policies",
+              "severity": "INFO",
+              "category": "disclosure",
+              "header": "x-permitted-cross-domain-policies",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            }
+          ],
+          "bonuses": []
+        },
+        "header_checks": [
+          {
+            "header": "Content-Security-Policy",
+            "status": "HIGH",
+            "state": "FAIL",
+            "value": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; img-src *; frame-ancestors *; report-uri /csp-report",
+            "note": "6 directive(s)"
+          },
+          {
+            "header": "Strict-Transport-Security",
+            "status": "MEDIUM",
+            "state": "WARNING",
+            "value": "max-age=300",
+            "note": "Policy can be strengthened"
+          },
+          {
+            "header": "X-Content-Type-Options",
+            "status": "MEDIUM",
+            "state": "MISSING",
+            "value": null,
+            "note": "MIME sniffing not disabled"
+          },
+          {
+            "header": "X-Frame-Options",
+            "status": "MEDIUM",
+            "state": "WARNING",
+            "value": "ALLOW-FROM https://partner.example.com",
+            "note": "Obsolete ALLOW-FROM syntax"
+          },
+          {
+            "header": "Referrer-Policy",
+            "status": "MEDIUM",
+            "state": "WARNING",
+            "value": "unsafe-url",
+            "note": "Weak policy: unsafe-url"
+          },
+          {
+            "header": "Permissions-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browser feature defaults apply"
+          },
+          {
+            "header": "Cross-Origin-Opener-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browsing context not isolated"
+          },
+          {
+            "header": "Cross-Origin-Resource-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Embedding not restricted"
+          },
+          {
+            "header": "Cross-Origin-Embedder-Policy",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Not cross-origin isolated"
+          }
+        ],
+        "extra_checks": [
+          {
+            "header": "Access-Control-Allow-Origin",
+            "status": "HIGH",
+            "state": "FAIL",
+            "value": "*",
+            "note": "Cross-origin sharing enabled"
+          },
+          {
+            "header": "X-XSS-Protection",
+            "status": "LOW",
+            "state": "DEPRECATED",
+            "value": "1; mode=block",
+            "note": "Legacy filter enabled"
+          },
+          {
+            "header": "X-Permitted-Cross-Domain-Policies",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Legacy Adobe clients fall back to crossdomain.xml"
+          }
+        ],
+        "findings": [
+          {
+            "id": "HS-007",
+            "title": "Target served over plaintext HTTP",
+            "severity": "HIGH",
+            "category": "transport",
+            "header": null,
+            "value": "http://127.0.0.1:8080/weak",
+            "reason": "The target was served over plaintext HTTP (http://127.0.0.1:8080/weak); no transport encryption protects the response or its cookies.",
+            "impact": "All traffic — including cookies, tokens and form data — is transmitted in the clear and can be read or modified by anyone on the network path.",
+            "recommendation": "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-101",
+            "title": "CSP allows 'unsafe-inline' scripts",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "script-src: * 'unsafe-inline' 'unsafe-eval' data:",
+            "reason": "script-src allows 'unsafe-inline', so inline scripts and event handlers execute.",
+            "impact": "'unsafe-inline' in a script directive permits inline <script> blocks and event handlers, which is exactly the capability an XSS payload needs — the policy stops being a meaningful mitigation.",
+            "recommendation": "Move inline scripts to external files, or adopt a nonce/hash based strict CSP with 'strict-dynamic' for third-party loaders.",
+            "remediation": "Content-Security-Policy: script-src 'nonce-{RANDOM}' 'strict-dynamic' https:; object-src 'none'; base-uri 'self'",
+            "references": [
+              "https://csp.withgoogle.com/docs/strict-csp.html"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-103",
+            "title": "CSP directive uses a wildcard source",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "default-src: * 'unsafe-inline' 'unsafe-eval'",
+            "reason": "default-src contains the wildcard source '*', allowing resources from any matching origin.",
+            "impact": "A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.",
+            "recommendation": "Replace '*' with the explicit origins the application actually needs.",
+            "remediation": "Content-Security-Policy: default-src 'self'; img-src 'self' https://cdn.example.com",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-103",
+            "title": "CSP directive uses a wildcard source",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "script-src: * 'unsafe-inline' 'unsafe-eval' data:",
+            "reason": "script-src contains the wildcard source '*', allowing resources from any matching origin.",
+            "impact": "A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.",
+            "recommendation": "Replace '*' with the explicit origins the application actually needs.",
+            "remediation": "Content-Security-Policy: default-src 'self'; img-src 'self' https://cdn.example.com",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-109",
+            "title": "CSP allows a dangerous scheme source",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "script-src: data:",
+            "reason": "Dangerous scheme source(s) in an executable context: script-src: data:.",
+            "impact": "data:, blob: or filesystem: in a script/object directive lets an attacker encode a payload directly into a URI and execute it, bypassing origin restrictions.",
+            "recommendation": "Remove data:/blob: from script-src and object-src; keep them only for img-src or media where genuinely required.",
+            "remediation": "Content-Security-Policy: script-src 'self' 'nonce-{RANDOM}'; object-src 'none'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-117",
+            "title": "CSP frame-ancestors allows any origin",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "frame-ancestors: *",
+            "reason": "frame-ancestors * allows any site to frame this page.",
+            "impact": "frame-ancestors * lets any site frame the page, which enables clickjacking and UI redress attacks against authenticated users.",
+            "recommendation": "Set frame-ancestors 'none' or list the specific origins allowed to embed the page.",
+            "remediation": "Content-Security-Policy: frame-ancestors 'none'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/frame-ancestors"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-311",
+            "title": "CORS wildcard combined with credentials",
+            "severity": "HIGH",
+            "category": "cors",
+            "header": "access-control-allow-origin",
+            "value": "* + credentials",
+            "reason": "Access-Control-Allow-Origin is '*' while Access-Control-Allow-Credentials is true.",
+            "impact": "A wildcard origin together with Access-Control-Allow-Credentials: true is rejected by browsers but signals a misconfigured CORS layer; if the wildcard is ever replaced by origin reflection, any site could read authenticated responses.",
+            "recommendation": "Never combine credentials with a wildcard. Echo one validated origin and keep the allow-list short.",
+            "remediation": "Access-Control-Allow-Origin: https://app.example.com\nAccess-Control-Allow-Credentials: true\nVary: Origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Credentials"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-400",
+            "title": "Cookie without Secure attribute (PHPSESSID)",
+            "severity": "HIGH",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost",
+            "reason": "Cookie 'PHPSESSID' is missing the Secure attribute.",
+            "impact": "The cookie can be transmitted over plaintext HTTP, so an on-path attacker or a single mixed-content request can capture it.",
+            "recommendation": "Add the Secure attribute to every cookie and serve the site exclusively over HTTPS.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "PHPSESSID"
+            }
+          },
+          {
+            "id": "HS-403",
+            "title": "SameSite=None cookie without Secure (tracking)",
+            "severity": "HIGH",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "tracking=1; Path=/; Max-Age=63072000; SameSite=None",
+            "reason": "Cookie 'tracking' uses SameSite=None without the Secure attribute; browsers reject it.",
+            "impact": "SameSite=None requires Secure. Browsers reject the cookie, and if it is accepted anywhere it is sent cross-site over plaintext connections.",
+            "recommendation": "Always pair SameSite=None with Secure, and question whether cross-site delivery is really needed.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=None",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite"
+            ],
+            "metadata": {
+              "cookie": "tracking"
+            }
+          },
+          {
+            "id": "HS-407",
+            "title": "Cookie set over plaintext HTTP (PHPSESSID)",
+            "severity": "HIGH",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost",
+            "reason": "Cookie 'PHPSESSID' was set over a plaintext HTTP response.",
+            "impact": "The cookie was delivered over an unencrypted channel and can be read by anyone on the path, regardless of its attributes.",
+            "recommendation": "Serve the application over HTTPS only and set cookies from HTTPS responses.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "PHPSESSID"
+            }
+          },
+          {
+            "id": "HS-407",
+            "title": "Cookie set over plaintext HTTP (tracking)",
+            "severity": "HIGH",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "tracking=1; Path=/; Max-Age=63072000; SameSite=None",
+            "reason": "Cookie 'tracking' was set over a plaintext HTTP response.",
+            "impact": "The cookie was delivered over an unencrypted channel and can be read by anyone on the path, regardless of its attributes.",
+            "recommendation": "Serve the application over HTTPS only and set cookies from HTTPS responses.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "tracking"
+            }
+          },
+          {
+            "id": "HS-002",
+            "title": "HSTS max-age is too short",
+            "severity": "MEDIUM",
+            "category": "transport",
+            "header": "strict-transport-security",
+            "value": "max-age=300",
+            "reason": "max-age is 300 seconds (~0 days); at least 31536000 (1 year) is recommended.",
+            "impact": "A short max-age shrinks the window in which the browser enforces HTTPS. Once it expires the next navigation can be downgraded to HTTP again.",
+            "recommendation": "Use max-age=31536000 (one year). Ramp up gradually (300 → 86400 → 31536000) if the estate is still being migrated.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-102",
+            "title": "CSP allows 'unsafe-eval'",
+            "severity": "MEDIUM",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "script-src: * 'unsafe-inline' 'unsafe-eval' data:",
+            "reason": "script-src allows 'unsafe-eval'.",
+            "impact": "'unsafe-eval' re-enables eval(), new Function() and string timers, giving injected content a direct route from data to executable code.",
+            "recommendation": "Remove 'unsafe-eval' and migrate templating/JSON parsing away from eval-based helpers (use JSON.parse and pre-compiled templates).",
+            "remediation": "Content-Security-Policy: script-src 'self' 'nonce-{RANDOM}'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/script-src"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-103",
+            "title": "CSP directive uses a wildcard source",
+            "severity": "MEDIUM",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "img-src: *",
+            "reason": "img-src contains the wildcard source '*', allowing resources from any matching origin.",
+            "impact": "A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.",
+            "recommendation": "Replace '*' with the explicit origins the application actually needs.",
+            "remediation": "Content-Security-Policy: default-src 'self'; img-src 'self' https://cdn.example.com",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-103",
+            "title": "CSP directive uses a wildcard source",
+            "severity": "MEDIUM",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "style-src: * 'unsafe-inline'",
+            "reason": "style-src contains the wildcard source '*', allowing resources from any matching origin.",
+            "impact": "A wildcard source lets the page load that resource type from any origin, so an attacker-controlled host is an acceptable source as far as the browser is concerned.",
+            "recommendation": "Replace '*' with the explicit origins the application actually needs.",
+            "remediation": "Content-Security-Policy: default-src 'self'; img-src 'self' https://cdn.example.com",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-104",
+            "title": "CSP does not restrict object-src",
+            "severity": "MEDIUM",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; img-src *; frame-ancestors *; report-uri /csp-report",
+            "reason": "object-src (via default-src) is * 'unsafe-inline' 'unsafe-eval' instead of 'none'.",
+            "impact": "Plugin content (<object>, <embed>, <applet>) can execute scripts in the page's context and has historically been used to bypass CSP entirely.",
+            "recommendation": "Add object-src 'none' — virtually no modern application needs plugin content.",
+            "remediation": "Content-Security-Policy: object-src 'none'",
+            "references": [
+              "https://csp.withgoogle.com/docs/strict-csp.html"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-105",
+            "title": "CSP does not restrict base-uri",
+            "severity": "MEDIUM",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; img-src *; frame-ancestors *; report-uri /csp-report",
+            "reason": "base-uri is not set (it does not fall back to default-src).",
+            "impact": "Without base-uri an injected <base> tag can re-point every relative URL on the page (scripts, forms, links) at an attacker-controlled host.",
+            "recommendation": "Add base-uri 'self' (or 'none' for pages with no relative-base requirements).",
+            "remediation": "Content-Security-Policy: base-uri 'self'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/base-uri"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-202",
+            "title": "X-Frame-Options uses obsolete ALLOW-FROM",
+            "severity": "MEDIUM",
+            "category": "framing",
+            "header": "x-frame-options",
+            "value": "ALLOW-FROM https://partner.example.com",
+            "reason": "ALLOW-FROM is not supported by modern browsers, so the page is effectively unprotected.",
+            "impact": "ALLOW-FROM was never implemented by Chrome/Safari and was removed from Firefox, so the directive provides no protection in current browsers.",
+            "recommendation": "Replace it with CSP frame-ancestors listing the permitted embedding origins.",
+            "remediation": "Content-Security-Policy: frame-ancestors https://partner.example.com",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-210",
+            "title": "Missing X-Content-Type-Options",
+            "severity": "MEDIUM",
+            "category": "content",
+            "header": "x-content-type-options",
+            "value": null,
+            "reason": "X-Content-Type-Options was not returned.",
+            "impact": "Without nosniff, browsers may MIME-sniff responses and execute a user-uploaded or text response as script or stylesheet.",
+            "recommendation": "Send X-Content-Type-Options: nosniff on every response and make sure Content-Type values are correct.",
+            "remediation": "X-Content-Type-Options: nosniff",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-221",
+            "title": "Weak Referrer-Policy value",
+            "severity": "MEDIUM",
+            "category": "referrer",
+            "header": "referrer-policy",
+            "value": "unsafe-url",
+            "reason": "Effective policy 'unsafe-url': Sends the full URL (path and query) to every destination, including plaintext HTTP origins.",
+            "impact": "This policy sends full URLs (potentially including session identifiers, reset tokens or internal paths) to third parties, and some variants leak over plaintext downgrades.",
+            "recommendation": "Switch to strict-origin-when-cross-origin, same-origin or no-referrer.",
+            "remediation": "Referrer-Policy: strict-origin-when-cross-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-400",
+            "title": "Cookie without Secure attribute (tracking)",
+            "severity": "MEDIUM",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "tracking=1; Path=/; Max-Age=63072000; SameSite=None",
+            "reason": "Cookie 'tracking' is missing the Secure attribute.",
+            "impact": "The cookie can be transmitted over plaintext HTTP, so an on-path attacker or a single mixed-content request can capture it.",
+            "recommendation": "Add the Secure attribute to every cookie and serve the site exclusively over HTTPS.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "tracking"
+            }
+          },
+          {
+            "id": "HS-401",
+            "title": "Cookie without HttpOnly attribute (PHPSESSID)",
+            "severity": "MEDIUM",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost",
+            "reason": "Cookie 'PHPSESSID' is readable by JavaScript (no HttpOnly attribute). The name suggests it carries session state.",
+            "impact": "JavaScript can read this cookie, so a single XSS flaw turns into full session theft.",
+            "recommendation": "Add HttpOnly to all cookies that do not need to be read by client-side scripts.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "PHPSESSID"
+            }
+          },
+          {
+            "id": "HS-003",
+            "title": "HSTS does not cover subdomains",
+            "severity": "LOW",
+            "category": "transport",
+            "header": "strict-transport-security",
+            "value": "max-age=300",
+            "reason": "The policy does not include subdomains.",
+            "impact": "Without includeSubDomains an attacker can target a forgotten subdomain over HTTP and set or read domain-scoped cookies from there.",
+            "recommendation": "Add includeSubDomains after verifying that every subdomain (including internal ones) is reachable over HTTPS.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Strict-Transport-Security"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-113",
+            "title": "CSP style-src allows 'unsafe-inline'",
+            "severity": "LOW",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "style-src: * 'unsafe-inline'",
+            "reason": "style-src allows 'unsafe-inline' for stylesheets.",
+            "impact": "Inline styles enable CSS-based data exfiltration and UI redressing tricks, though the impact is lower than for scripts.",
+            "recommendation": "Move inline styles into stylesheets or apply nonces/hashes to style blocks.",
+            "remediation": "Content-Security-Policy: style-src 'self' 'nonce-{RANDOM}'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/style-src"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-114",
+            "title": "CSP does not restrict form-action",
+            "severity": "LOW",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; img-src *; frame-ancestors *; report-uri /csp-report",
+            "reason": "form-action is not set, so form submissions are unrestricted.",
+            "impact": "Without form-action an injected or modified form can post user credentials to an attacker-controlled endpoint.",
+            "recommendation": "Add form-action 'self' (plus any legitimate payment/SSO endpoints).",
+            "remediation": "Content-Security-Policy: form-action 'self'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/form-action"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-230",
+            "title": "Missing Permissions-Policy",
+            "severity": "LOW",
+            "category": "permissions",
+            "header": "permissions-policy",
+            "value": null,
+            "reason": "No Permissions-Policy header was returned.",
+            "impact": "Powerful browser features (camera, microphone, geolocation, payment) are left at their default availability for the page and for any embedded third-party frames.",
+            "recommendation": "Send a deny-by-default Permissions-Policy and only enable what the app needs.",
+            "remediation": "Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-300",
+            "title": "Missing Cross-Origin-Opener-Policy",
+            "severity": "LOW",
+            "category": "cross-origin",
+            "header": "cross-origin-opener-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Opener-Policy header was returned.",
+            "impact": "Without COOP, a window opened by (or opening) this page keeps a cross-origin reference to it, enabling XS-Leaks and tab-nabbing style attacks.",
+            "recommendation": "Send Cross-Origin-Opener-Policy: same-origin (use same-origin-allow-popups when OAuth popups are required).",
+            "remediation": "Cross-Origin-Opener-Policy: same-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-302",
+            "title": "Missing Cross-Origin-Resource-Policy",
+            "severity": "LOW",
+            "category": "cross-origin",
+            "header": "cross-origin-resource-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Resource-Policy header was returned.",
+            "impact": "CORP tells the browser who may embed this resource. Without it, responses can be pulled into cross-origin documents and abused for side-channel (Spectre-class) leaks.",
+            "recommendation": "Send Cross-Origin-Resource-Policy: same-origin for private resources, same-site for shared internal assets, cross-origin only for public CDN content.",
+            "remediation": "Cross-Origin-Resource-Policy: same-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-316",
+            "title": "CORS allows unsafe methods broadly",
+            "severity": "LOW",
+            "category": "cors",
+            "header": "access-control-allow-methods",
+            "value": "GET, POST, PUT, DELETE, TRACE",
+            "reason": "Cross-origin callers may use DELETE, PUT, TRACE.",
+            "impact": "Allowing every method (including wildcards or state-changing verbs) from other origins widens the CSRF/abuse surface of the API.",
+            "recommendation": "List only the methods the endpoint actually implements.",
+            "remediation": "Access-Control-Allow-Methods: GET, POST, OPTIONS",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Methods"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-317",
+            "title": "CORS allows arbitrary request headers",
+            "severity": "LOW",
+            "category": "cors",
+            "header": "access-control-allow-headers",
+            "value": "*",
+            "reason": "Access-Control-Allow-Headers is '*', allowing any custom request header cross-origin.",
+            "impact": "A wildcard header allow-list lets cross-origin callers send custom headers such as Authorization or X-Requested-With, which some backends treat as trusted.",
+            "recommendation": "Enumerate the accepted headers explicitly.",
+            "remediation": "Access-Control-Allow-Headers: Content-Type, Authorization",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Allow-Headers"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-401",
+            "title": "Cookie without HttpOnly attribute (tracking)",
+            "severity": "LOW",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "tracking=1; Path=/; Max-Age=63072000; SameSite=None",
+            "reason": "Cookie 'tracking' is readable by JavaScript (no HttpOnly attribute).",
+            "impact": "JavaScript can read this cookie, so a single XSS flaw turns into full session theft.",
+            "recommendation": "Add HttpOnly to all cookies that do not need to be read by client-side scripts.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax; Path=/",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "tracking"
+            }
+          },
+          {
+            "id": "HS-402",
+            "title": "Cookie without SameSite attribute (PHPSESSID)",
+            "severity": "LOW",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost",
+            "reason": "Cookie 'PHPSESSID' does not set SameSite explicitly.",
+            "impact": "Cross-site requests may carry this cookie depending on the browser's default, which keeps classic CSRF viable on older clients.",
+            "recommendation": "Set SameSite=Lax (or Strict for sensitive session cookies) explicitly.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie/SameSite"
+            ],
+            "metadata": {
+              "cookie": "PHPSESSID"
+            }
+          },
+          {
+            "id": "HS-404",
+            "title": "Cookie scoped to a broad parent domain (PHPSESSID)",
+            "severity": "LOW",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "PHPSESSID=8b1f0c2d9e; Path=/; Domain=localhost",
+            "reason": "Cookie 'PHPSESSID' is scoped to the parent domain 'localhost', so every subdomain receives it.",
+            "impact": "A cookie scoped to the registrable domain is sent to every subdomain, so a compromised or attacker-controlled subdomain can read or overwrite it.",
+            "recommendation": "Drop the Domain attribute to make the cookie host-only, or use the __Host- prefix.",
+            "remediation": "Set-Cookie: __Host-session=...; Secure; HttpOnly; SameSite=Lax; Path=/",
+            "references": [
+              "https://www.rfc-editor.org/rfc/rfc6265"
+            ],
+            "metadata": {
+              "cookie": "PHPSESSID"
+            }
+          },
+          {
+            "id": "HS-500",
+            "title": "Server software version disclosed",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "server",
+            "value": "HeaderSpecterDemo/1.0, nginx/1.18.0 (Ubuntu)",
+            "reason": "The Server header exposes a specific version: HeaderSpecterDemo/1.0, nginx/1.18.0 (Ubuntu).",
+            "impact": "Exact software versions let an attacker map the target to known CVEs without touching the application, speeding up reconnaissance.",
+            "recommendation": "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+            "remediation": "Server: nginx",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-501",
+            "title": "Technology disclosed via X-Powered-By",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "x-powered-by",
+            "value": "PHP/7.4.3",
+            "reason": "X-Powered-By discloses: PHP/7.4.3.",
+            "impact": "The header advertises the application stack and often its exact version, which is pure reconnaissance value for an attacker.",
+            "recommendation": "Remove the header (PHP: expose_php=Off; Express: app.disable('x-powered-by')).",
+            "remediation": null,
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-502",
+            "title": "Framework version headers exposed",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "x-aspnet-version",
+            "value": "4.0.30319",
+            "reason": "X-AspNet-Version discloses the framework version: 4.0.30319.",
+            "impact": "ASP.NET/MVC version headers identify the exact framework build in use.",
+            "recommendation": "Remove them via <httpRuntime enableVersionHeader=\"false\" /> and MvcHandler.DisableMvcResponseHeader = true.",
+            "remediation": null,
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-511",
+            "title": "X-XSS-Protection filtering enabled",
+            "severity": "LOW",
+            "category": "deprecated",
+            "header": "x-xss-protection",
+            "value": "1; mode=block",
+            "reason": "X-XSS-Protection is set to '1; mode=block'; the legacy auditor is removed from modern browsers and was itself a source of vulnerabilities.",
+            "impact": "Value '1' without mode=block enables legacy filtering that was itself exploitable for XS-leaks and content injection in older browsers.",
+            "recommendation": "Set X-XSS-Protection: 0 and deploy a CSP instead.",
+            "remediation": "X-XSS-Protection: 0",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-XSS-Protection"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-601",
+            "title": "Potentially sensitive response is cacheable",
+            "severity": "LOW",
+            "category": "caching",
+            "header": "cache-control",
+            "value": "public, max-age=86400",
+            "reason": "The response sets cookies but does not use Cache-Control: no-store, so a shared cache may store user-specific content.",
+            "impact": "The response sets cookies or looks user-specific, yet allows shared/public caching, which can leak one user's content to another via a proxy or CDN.",
+            "recommendation": "Send Cache-Control: no-store (plus private where appropriate) for user-specific responses.",
+            "remediation": "Cache-Control: no-store, private",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cache-Control"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-004",
+            "title": "HSTS preload not requested",
+            "severity": "INFO",
+            "category": "transport",
+            "header": "strict-transport-security",
+            "value": "max-age=300",
+            "reason": "The policy does not request HSTS preloading.",
+            "impact": "Without preloading, the very first visit from a fresh browser profile can still be made over HTTP (trust-on-first-use gap).",
+            "recommendation": "Once max-age >= 31536000 and includeSubDomains is set, add the preload token and submit the domain at hstspreload.org. Preloading is hard to undo — plan first.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
+            "references": [
+              "https://hstspreload.org/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-006",
+            "title": "HSTS sent over plaintext HTTP",
+            "severity": "INFO",
+            "category": "transport",
+            "header": "strict-transport-security",
+            "value": "max-age=300",
+            "reason": "The HSTS header was returned over HTTP, where browsers ignore it.",
+            "impact": "HSTS headers received over HTTP are ignored by browsers, so the policy is not actually applied.",
+            "recommendation": "Redirect HTTP to HTTPS first and send the HSTS header on the HTTPS response.",
+            "remediation": null,
+            "references": [
+              "https://www.rfc-editor.org/rfc/rfc6797#section-8.1"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-120",
+            "title": "CSP uses deprecated report-uri only",
+            "severity": "INFO",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": "/csp-report",
+            "reason": "Only the deprecated report-uri directive is configured.",
+            "impact": "report-uri is deprecated in favour of the Reporting API; newer browsers prefer report-to and may drop report-uri support.",
+            "recommendation": "Keep report-uri for legacy clients but add report-to with a Reporting-Endpoints header.",
+            "remediation": "Reporting-Endpoints: csp-endpoint=\"https://example.com/csp-reports\"",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy/report-to"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-304",
+            "title": "Missing Cross-Origin-Embedder-Policy",
+            "severity": "INFO",
+            "category": "cross-origin",
+            "header": "cross-origin-embedder-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Embedder-Policy header was returned.",
+            "impact": "Without COEP the document cannot become cross-origin isolated, so powerful APIs (SharedArrayBuffer, high-resolution timers) stay disabled and Spectre-class mitigations are weaker.",
+            "recommendation": "Send Cross-Origin-Embedder-Policy: require-corp (or credentialless) together with COOP: same-origin when you need cross-origin isolation.",
+            "remediation": "Cross-Origin-Embedder-Policy: require-corp",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-406",
+            "title": "Long-lived persistent cookie (tracking)",
+            "severity": "INFO",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "tracking=1; Path=/; Max-Age=63072000; SameSite=None",
+            "reason": "Cookie 'tracking' persists for roughly 730 days.",
+            "impact": "Very long lifetimes extend the window in which a stolen cookie remains valid.",
+            "recommendation": "Prefer short-lived session cookies with server-side revocation for authentication state.",
+            "remediation": null,
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "tracking",
+              "days": 730
+            }
+          },
+          {
+            "id": "HS-516",
+            "title": "Missing X-Permitted-Cross-Domain-Policies",
+            "severity": "INFO",
+            "category": "disclosure",
+            "header": "x-permitted-cross-domain-policies",
+            "value": null,
+            "reason": "X-Permitted-Cross-Domain-Policies was not returned.",
+            "impact": "Legacy Adobe clients fall back to looking for a /crossdomain.xml policy file.",
+            "recommendation": "Send X-Permitted-Cross-Domain-Policies: none (defence in depth, zero cost).",
+            "remediation": "X-Permitted-Cross-Domain-Policies: none",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          }
+        ],
+        "csp": {
+          "present": true,
+          "enforced": true,
+          "report_only_present": false,
+          "raw": "default-src * 'unsafe-inline' 'unsafe-eval'; script-src * 'unsafe-inline' 'unsafe-eval' data:; style-src * 'unsafe-inline'; img-src *; frame-ancestors *; report-uri /csp-report",
+          "directives": {
+            "default-src": [
+              "*",
+              "'unsafe-inline'",
+              "'unsafe-eval'"
+            ],
+            "script-src": [
+              "*",
+              "'unsafe-inline'",
+              "'unsafe-eval'",
+              "data:"
+            ],
+            "style-src": [
+              "*",
+              "'unsafe-inline'"
+            ],
+            "img-src": [
+              "*"
+            ],
+            "frame-ancestors": [
+              "*"
+            ],
+            "report-uri": [
+              "/csp-report"
+            ]
+          },
+          "uses_nonce": false,
+          "uses_hash": false,
+          "strict_dynamic": false,
+          "strict": false,
+          "host_sources": [
+            "/csp-report"
+          ],
+          "frame_ancestors": [
+            "*"
+          ],
+          "checks": [
+            {
+              "label": "Enforcement",
+              "status": "PASS",
+              "detail": "Enforcing policy present"
+            },
+            {
+              "label": "'unsafe-inline' (scripts)",
+              "status": "HIGH",
+              "detail": "detected"
+            },
+            {
+              "label": "'unsafe-eval'",
+              "status": "MEDIUM",
+              "detail": "detected"
+            },
+            {
+              "label": "'unsafe-inline' (styles)",
+              "status": "LOW",
+              "detail": "detected"
+            },
+            {
+              "label": "Wildcard sources",
+              "status": "MEDIUM",
+              "detail": "default-src, frame-ancestors, img-src, script-src, style-src"
+            },
+            {
+              "label": "Dangerous schemes",
+              "status": "HIGH",
+              "detail": "script-src: data:"
+            },
+            {
+              "label": "default-src",
+              "status": "MEDIUM",
+              "detail": "* 'unsafe-inline' 'unsafe-eval' — permissive fallback"
+            },
+            {
+              "label": "object-src",
+              "status": "MEDIUM",
+              "detail": "not restricted to 'none'"
+            },
+            {
+              "label": "base-uri",
+              "status": "MEDIUM",
+              "detail": "missing"
+            },
+            {
+              "label": "frame-ancestors",
+              "status": "PASS",
+              "detail": "*"
+            },
+            {
+              "label": "form-action",
+              "status": "LOW",
+              "detail": "missing"
+            },
+            {
+              "label": "Violation reporting",
+              "status": "INFO",
+              "detail": "report-uri only (deprecated)"
+            },
+            {
+              "label": "Allow-list size",
+              "status": "PASS",
+              "detail": "1 host source(s)"
+            }
+          ],
+          "directive_rows": [
+            {
+              "directive": "default-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "HIGH",
+              "note": "wildcard source"
+            },
+            {
+              "directive": "script-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval' data:",
+              "status": "HIGH",
+              "note": "wildcard source"
+            },
+            {
+              "directive": "style-src",
+              "value": "* 'unsafe-inline'",
+              "status": "MEDIUM",
+              "note": "wildcard source"
+            },
+            {
+              "directive": "img-src",
+              "value": "*",
+              "status": "MEDIUM",
+              "note": "wildcard source"
+            },
+            {
+              "directive": "font-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "connect-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "frame-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "object-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "media-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "manifest-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "worker-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "child-src",
+              "value": "* 'unsafe-inline' 'unsafe-eval'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "base-uri",
+              "value": "—",
+              "status": "MEDIUM",
+              "note": "not set"
+            },
+            {
+              "directive": "form-action",
+              "value": "—",
+              "status": "MEDIUM",
+              "note": "not set"
+            },
+            {
+              "directive": "frame-ancestors",
+              "value": "*",
+              "status": "HIGH",
+              "note": "wildcard source"
+            },
+            {
+              "directive": "report-uri",
+              "value": "/csp-report",
+              "status": "PASS",
+              "note": "explicit policy"
+            }
+          ]
+        },
+        "hsts": {
+          "present": true,
+          "raw": "max-age=300",
+          "max_age": 300,
+          "include_subdomains": false,
+          "preload": false,
+          "valid": true,
+          "rows": [
+            {
+              "label": "Header present",
+              "status": "PASS",
+              "detail": "max-age=300"
+            },
+            {
+              "label": "Applied by browsers",
+              "status": "INFO",
+              "detail": "ignored over plaintext HTTP"
+            },
+            {
+              "label": "max-age",
+              "status": "MEDIUM",
+              "detail": "300 s (short)"
+            },
+            {
+              "label": "includeSubDomains",
+              "status": "LOW",
+              "detail": "not present"
+            },
+            {
+              "label": "preload",
+              "status": "INFO",
+              "detail": "not requested"
+            }
+          ]
+        },
+        "permissions_policy": {
+          "present": false,
+          "raw": null,
+          "directives": {},
+          "unrestricted": [],
+          "restricted": [],
+          "malformed": []
+        },
+        "cross_origin": {
+          "coop": null,
+          "corp": null,
+          "coep": null,
+          "cross_origin_isolated": false
+        },
+        "cookies": {
+          "count": 2,
+          "insecure_count": 2,
+          "cookies": [
+            {
+              "name": "PHPSESSID",
+              "value_preview": "8b1f…(10 chars, redacted)",
+              "secure": false,
+              "http_only": false,
+              "same_site": null,
+              "domain": "localhost",
+              "path": "/",
+              "max_age": null,
+              "expires": null,
+              "lifetime_seconds": null,
+              "prefix": null,
+              "session_like": true,
+              "source": "response",
+              "status": "HIGH",
+              "issues": [
+                "set over HTTP",
+                "missing Secure",
+                "missing HttpOnly",
+                "missing SameSite",
+                "broad Domain scope"
+              ]
+            },
+            {
+              "name": "tracking",
+              "value_preview": "*",
+              "secure": false,
+              "http_only": false,
+              "same_site": "None",
+              "domain": null,
+              "path": "/",
+              "max_age": 63072000,
+              "expires": null,
+              "lifetime_seconds": 63072000,
+              "prefix": null,
+              "session_like": false,
+              "source": "response",
+              "status": "HIGH",
+              "issues": [
+                "set over HTTP",
+                "missing Secure",
+                "missing HttpOnly",
+                "SameSite=None without Secure",
+                "long lifetime (~730 days)"
+              ]
+            }
+          ]
+        },
+        "cors": {
+          "present": true,
+          "allow_origin": "*",
+          "allow_credentials": true,
+          "allow_methods": [
+            "GET",
+            "POST",
+            "PUT",
+            "DELETE",
+            "TRACE"
+          ],
+          "allow_headers": [
+            "*"
+          ],
+          "expose_headers": [],
+          "max_age": null,
+          "vary_origin": false,
+          "reflects_origin": false,
+          "probe_origin": "https://headerspecter.invalid",
+          "probe_performed": true,
+          "checks": [
+            {
+              "label": "Allow-Origin",
+              "status": "HIGH",
+              "detail": "* with credentials — invalid and unsafe"
+            },
+            {
+              "label": "Allow-Credentials",
+              "status": "MEDIUM",
+              "detail": "true — responses are readable by the allowed origin with cookies attached"
+            },
+            {
+              "label": "Allow-Methods",
+              "status": "LOW",
+              "detail": "DELETE, GET, POST, PUT, TRACE"
+            },
+            {
+              "label": "Allow-Headers",
+              "status": "LOW",
+              "detail": "* (any request header)"
+            }
+          ]
+        },
+        "redirects": {
+          "count": 0,
+          "upgraded_to_https": false,
+          "downgraded_to_http": false,
+          "cross_host": false,
+          "looped": false,
+          "final_url": "http://127.0.0.1:8080/weak",
+          "final_status": 200,
+          "hops": []
+        },
+        "tls": null,
+        "tls_checks": [
+          {
+            "label": "HTTPS",
+            "status": "HIGH",
+            "detail": "not in use — traffic is sent in clear text"
+          }
+        ],
+        "framing_checks": [
+          {
+            "label": "X-Frame-Options",
+            "status": "MEDIUM",
+            "detail": "ALLOW-FROM is obsolete"
+          }
+        ],
+        "caching_checks": [
+          {
+            "label": "Cache-Control",
+            "status": "INFO",
+            "detail": "public, max-age=86400"
+          },
+          {
+            "label": "Sensitive caching",
+            "status": "LOW",
+            "detail": "cookies set on a cacheable response"
+          }
+        ],
+        "disclosure": [
+          {
+            "header": "Server",
+            "value": "HeaderSpecterDemo/1.0, nginx/1.18.0 (Ubuntu)",
+            "severity": "LOW",
+            "note": "Version disclosed"
+          },
+          {
+            "header": "X-Powered-By",
+            "value": "PHP/7.4.3",
+            "severity": "LOW",
+            "note": "Application stack disclosed"
+          },
+          {
+            "header": "X-AspNet-Version",
+            "value": "4.0.30319",
+            "severity": "LOW",
+            "note": "Framework version disclosed"
+          }
+        ],
+        "recommendations": [
+          "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+          "Move inline scripts to external files, or adopt a nonce/hash based strict CSP with 'strict-dynamic' for third-party loaders.",
+          "Replace '*' with the explicit origins the application actually needs.",
+          "Remove data:/blob: from script-src and object-src; keep them only for img-src or media where genuinely required.",
+          "Set frame-ancestors 'none' or list the specific origins allowed to embed the page.",
+          "Never combine credentials with a wildcard.",
+          "Add the Secure attribute to every cookie and serve the site exclusively over HTTPS.",
+          "Always pair SameSite=None with Secure, and question whether cross-site delivery is really needed."
+        ],
+        "policy": null
+      },
+      "meta": {
+        "scanner": "httpx",
+        "proxy": null,
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0",
+        "body_bytes_read": 210,
+        "total_ms": 18.59,
+        "probes": [
+          "cors"
+        ]
+      }
+    },
+    {
+      "tool": "HeaderSpecter",
+      "version": "1.0.0",
+      "schema": 1,
+      "target": "http://127.0.0.1:8080/legacy",
+      "url": "http://127.0.0.1:8080/legacy",
+      "final_url": "http://127.0.0.1:8080/legacy",
+      "scanned_at": "2026-09-25T12:09:48+00:00",
+      "status_code": 200,
+      "reason": "OK",
+      "http_version": "HTTP/1.0",
+      "elapsed_ms": 7.55,
+      "ok": true,
+      "error": null,
+      "error_kind": null,
+      "hint": null,
+      "score": 29.6,
+      "grade": "F",
+      "headers": [
+        {
+          "name": "server",
+          "value": "HeaderSpecterDemo/1.0"
+        },
+        {
+          "name": "date",
+          "value": "Fri, 25 Sep 2026 12:09:48 GMT"
+        },
+        {
+          "name": "content-type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "name": "content-length",
+          "value": "210"
+        },
+        {
+          "name": "public-key-pins",
+          "value": "pin-sha256=\"d6qzRu9zOECb90Uez27xWltNsj0e1Md7GkYYkVoZWmM=\"; max-age=5184000"
+        },
+        {
+          "name": "expect-ct",
+          "value": "max-age=86400, enforce"
+        },
+        {
+          "name": "x-xss-protection",
+          "value": "1"
+        },
+        {
+          "name": "pragma",
+          "value": "no-cache"
+        },
+        {
+          "name": "feature-policy",
+          "value": "camera 'none'; microphone 'none'"
+        },
+        {
+          "name": "x-permitted-cross-domain-policies",
+          "value": "all"
+        },
+        {
+          "name": "server",
+          "value": "Apache/2.4.29 (Ubuntu)"
+        },
+        {
+          "name": "x-generator",
+          "value": "Drupal 7 (https://www.drupal.org)"
+        },
+        {
+          "name": "via",
+          "value": "1.1 internal-cache-03.dc1.local"
+        }
+      ],
+      "request_headers": {
+        "host": "127.0.0.1:8080",
+        "connection": "keep-alive",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US,en;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "cache-control": "no-cache",
+        "pragma": "no-cache",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0"
+      },
+      "http_probe": null,
+      "analysis": {
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 2,
+          "MEDIUM": 3,
+          "LOW": 7,
+          "INFO": 7,
+          "PASS": 0
+        },
+        "score": {
+          "score": 29.6,
+          "base_score": 100.0,
+          "grade": "F",
+          "total_deducted": 70.45,
+          "total_bonus": 0,
+          "counts": {
+            "CRITICAL": 0,
+            "HIGH": 2,
+            "MEDIUM": 3,
+            "LOW": 7,
+            "INFO": 7,
+            "PASS": 0
+          },
+          "category_totals": {
+            "transport": 15.0,
+            "csp": 18.75,
+            "framing": 7.0,
+            "content": 7.0,
+            "deprecated": 6.0,
+            "referrer": 2.7,
+            "permissions": 2.55,
+            "cross-origin": 5.15,
+            "disclosure": 5.8,
+            "caching": 0.5
+          },
+          "deductions": [
+            {
+              "finding_id": "HS-007",
+              "title": "Target served over plaintext HTTP",
+              "severity": "HIGH",
+              "category": "transport",
+              "header": null,
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-100",
+              "title": "Missing Content-Security-Policy",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 18.75,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-200",
+              "title": "No clickjacking protection",
+              "severity": "MEDIUM",
+              "category": "framing",
+              "header": "x-frame-options",
+              "raw_points": 7.0,
+              "applied_points": 7.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-210",
+              "title": "Missing X-Content-Type-Options",
+              "severity": "MEDIUM",
+              "category": "content",
+              "header": "x-content-type-options",
+              "raw_points": 7.0,
+              "applied_points": 7.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-513",
+              "title": "Obsolete Public-Key-Pins header present",
+              "severity": "MEDIUM",
+              "category": "deprecated",
+              "header": "public-key-pins",
+              "raw_points": 7.0,
+              "applied_points": 6.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-220",
+              "title": "Missing Referrer-Policy",
+              "severity": "LOW",
+              "category": "referrer",
+              "header": "referrer-policy",
+              "raw_points": 2.7,
+              "applied_points": 2.7,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-230",
+              "title": "Missing Permissions-Policy",
+              "severity": "LOW",
+              "category": "permissions",
+              "header": "permissions-policy",
+              "raw_points": 2.55,
+              "applied_points": 2.55,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-300",
+              "title": "Missing Cross-Origin-Opener-Policy",
+              "severity": "LOW",
+              "category": "cross-origin",
+              "header": "cross-origin-opener-policy",
+              "raw_points": 2.4,
+              "applied_points": 2.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-302",
+              "title": "Missing Cross-Origin-Resource-Policy",
+              "severity": "LOW",
+              "category": "cross-origin",
+              "header": "cross-origin-resource-policy",
+              "raw_points": 2.4,
+              "applied_points": 2.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-500",
+              "title": "Server software version disclosed",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "server",
+              "raw_points": 1.8,
+              "applied_points": 1.8,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-511",
+              "title": "X-XSS-Protection filtering enabled",
+              "severity": "LOW",
+              "category": "deprecated",
+              "header": "x-xss-protection",
+              "raw_points": 3.0,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-515",
+              "title": "Permissive X-Permitted-Cross-Domain-Policies",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "x-permitted-cross-domain-policies",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-234",
+              "title": "Deprecated Feature-Policy header in use",
+              "severity": "INFO",
+              "category": "deprecated",
+              "header": "feature-policy",
+              "raw_points": 0.5,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-304",
+              "title": "Missing Cross-Origin-Embedder-Policy",
+              "severity": "INFO",
+              "category": "cross-origin",
+              "header": "cross-origin-embedder-policy",
+              "raw_points": 0.35,
+              "applied_points": 0.35,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-503",
+              "title": "Infrastructure detail disclosed via Via",
+              "severity": "INFO",
+              "category": "disclosure",
+              "header": "via",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-504",
+              "title": "Generator / CMS disclosed",
+              "severity": "INFO",
+              "category": "disclosure",
+              "header": "x-generator",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-512",
+              "title": "Deprecated Expect-CT header present",
+              "severity": "INFO",
+              "category": "deprecated",
+              "header": "expect-ct",
+              "raw_points": 0.5,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-514",
+              "title": "Legacy Pragma header present",
+              "severity": "INFO",
+              "category": "deprecated",
+              "header": "pragma",
+              "raw_points": 0.5,
+              "applied_points": 0.0,
+              "capped": true
+            },
+            {
+              "finding_id": "HS-600",
+              "title": "No Cache-Control header",
+              "severity": "INFO",
+              "category": "caching",
+              "header": "cache-control",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            }
+          ],
+          "bonuses": []
+        },
+        "header_checks": [
+          {
+            "header": "Content-Security-Policy",
+            "status": "HIGH",
+            "state": "MISSING",
+            "value": null,
+            "note": "No browser-side content policy"
+          },
+          {
+            "header": "Strict-Transport-Security",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Not applicable over plaintext HTTP"
+          },
+          {
+            "header": "X-Content-Type-Options",
+            "status": "MEDIUM",
+            "state": "MISSING",
+            "value": null,
+            "note": "MIME sniffing not disabled"
+          },
+          {
+            "header": "X-Frame-Options",
+            "status": "MEDIUM",
+            "state": "MISSING",
+            "value": null,
+            "note": "No framing protection"
+          },
+          {
+            "header": "Referrer-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browser default applies"
+          },
+          {
+            "header": "Permissions-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browser feature defaults apply"
+          },
+          {
+            "header": "Cross-Origin-Opener-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browsing context not isolated"
+          },
+          {
+            "header": "Cross-Origin-Resource-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Embedding not restricted"
+          },
+          {
+            "header": "Cross-Origin-Embedder-Policy",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Not cross-origin isolated"
+          }
+        ],
+        "extra_checks": [
+          {
+            "header": "Access-Control-Allow-Origin",
+            "status": "PASS",
+            "state": "PASS",
+            "value": null,
+            "note": "No cross-origin sharing configured"
+          },
+          {
+            "header": "X-XSS-Protection",
+            "status": "LOW",
+            "state": "DEPRECATED",
+            "value": "1",
+            "note": "Legacy filter enabled"
+          },
+          {
+            "header": "Expect-CT",
+            "status": "INFO",
+            "state": "DEPRECATED",
+            "value": "max-age=86400, enforce",
+            "note": "Obsolete header"
+          },
+          {
+            "header": "Public-Key-Pins",
+            "status": "MEDIUM",
+            "state": "DEPRECATED",
+            "value": "pin-sha256=\"d6qzRu9zOECb90Uez27xWltNsj0e1Md7GkYYkVoZWmM=\"; max-age=5184000",
+            "note": "HPKP removed from browsers"
+          },
+          {
+            "header": "X-Permitted-Cross-Domain-Policies",
+            "status": "LOW",
+            "state": "WEAK",
+            "value": "all",
+            "note": "Permissive value"
+          }
+        ],
+        "findings": [
+          {
+            "id": "HS-007",
+            "title": "Target served over plaintext HTTP",
+            "severity": "HIGH",
+            "category": "transport",
+            "header": null,
+            "value": "http://127.0.0.1:8080/legacy",
+            "reason": "The target was served over plaintext HTTP (http://127.0.0.1:8080/legacy); no transport encryption protects the response or its cookies.",
+            "impact": "All traffic — including cookies, tokens and form data — is transmitted in the clear and can be read or modified by anyone on the network path.",
+            "recommendation": "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-100",
+            "title": "Missing Content-Security-Policy",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": null,
+            "reason": "No Content-Security-Policy header was returned.",
+            "impact": "No CSP was detected, so the browser has no policy-level defence against injected scripts, unexpected resource loads or data exfiltration to attacker domains.",
+            "recommendation": "Deploy a restrictive CSP tailored to the application's real resource needs. Start in Report-Only mode, collect violations, then enforce.",
+            "remediation": "Content-Security-Policy: default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy",
+              "https://csp.withgoogle.com/docs/strict-csp.html"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-200",
+            "title": "No clickjacking protection",
+            "severity": "MEDIUM",
+            "category": "framing",
+            "header": "x-frame-options",
+            "value": null,
+            "reason": "Neither X-Frame-Options nor CSP frame-ancestors was returned.",
+            "impact": "Neither X-Frame-Options nor CSP frame-ancestors was returned, so the page can be embedded in a hidden iframe and used for clickjacking against logged-in users.",
+            "recommendation": "Send CSP frame-ancestors 'none' (modern) and X-Frame-Options: DENY (legacy clients) for pages that must never be framed.",
+            "remediation": "Content-Security-Policy: frame-ancestors 'none'\nX-Frame-Options: DENY",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-210",
+            "title": "Missing X-Content-Type-Options",
+            "severity": "MEDIUM",
+            "category": "content",
+            "header": "x-content-type-options",
+            "value": null,
+            "reason": "X-Content-Type-Options was not returned.",
+            "impact": "Without nosniff, browsers may MIME-sniff responses and execute a user-uploaded or text response as script or stylesheet.",
+            "recommendation": "Send X-Content-Type-Options: nosniff on every response and make sure Content-Type values are correct.",
+            "remediation": "X-Content-Type-Options: nosniff",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-513",
+            "title": "Obsolete Public-Key-Pins header present",
+            "severity": "MEDIUM",
+            "category": "deprecated",
+            "header": "public-key-pins",
+            "value": "pin-sha256=\"d6qzRu9zOECb90Uez27xWltNsj0e1Md7GkYYkVoZWmM=\"; max-age=5184000",
+            "reason": "Public-Key-Pins is present; HPKP is removed from all browsers and risks bricking the site.",
+            "impact": "HPKP is removed from all browsers and is a well known foot-gun: a wrong pin can make the site unreachable for the pin's lifetime (ransom/bricking risk).",
+            "recommendation": "Remove Public-Key-Pins entirely; use Certificate Transparency monitoring and CAA records instead.",
+            "remediation": null,
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Public-Key-Pins"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-220",
+            "title": "Missing Referrer-Policy",
+            "severity": "LOW",
+            "category": "referrer",
+            "header": "referrer-policy",
+            "value": null,
+            "reason": "No Referrer-Policy header was returned.",
+            "impact": "Browser defaults vary. Full URLs — including path, query string, tokens and internal identifiers — can leak to third-party sites through the Referer header.",
+            "recommendation": "Send Referrer-Policy: strict-origin-when-cross-origin (or no-referrer for the most privacy-sensitive applications).",
+            "remediation": "Referrer-Policy: strict-origin-when-cross-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-230",
+            "title": "Missing Permissions-Policy",
+            "severity": "LOW",
+            "category": "permissions",
+            "header": "permissions-policy",
+            "value": null,
+            "reason": "No Permissions-Policy header was returned.",
+            "impact": "Powerful browser features (camera, microphone, geolocation, payment) are left at their default availability for the page and for any embedded third-party frames.",
+            "recommendation": "Send a deny-by-default Permissions-Policy and only enable what the app needs.",
+            "remediation": "Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-300",
+            "title": "Missing Cross-Origin-Opener-Policy",
+            "severity": "LOW",
+            "category": "cross-origin",
+            "header": "cross-origin-opener-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Opener-Policy header was returned.",
+            "impact": "Without COOP, a window opened by (or opening) this page keeps a cross-origin reference to it, enabling XS-Leaks and tab-nabbing style attacks.",
+            "recommendation": "Send Cross-Origin-Opener-Policy: same-origin (use same-origin-allow-popups when OAuth popups are required).",
+            "remediation": "Cross-Origin-Opener-Policy: same-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-302",
+            "title": "Missing Cross-Origin-Resource-Policy",
+            "severity": "LOW",
+            "category": "cross-origin",
+            "header": "cross-origin-resource-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Resource-Policy header was returned.",
+            "impact": "CORP tells the browser who may embed this resource. Without it, responses can be pulled into cross-origin documents and abused for side-channel (Spectre-class) leaks.",
+            "recommendation": "Send Cross-Origin-Resource-Policy: same-origin for private resources, same-site for shared internal assets, cross-origin only for public CDN content.",
+            "remediation": "Cross-Origin-Resource-Policy: same-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-500",
+            "title": "Server software version disclosed",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "server",
+            "value": "HeaderSpecterDemo/1.0, Apache/2.4.29 (Ubuntu)",
+            "reason": "The Server header exposes a specific version: HeaderSpecterDemo/1.0, Apache/2.4.29 (Ubuntu).",
+            "impact": "Exact software versions let an attacker map the target to known CVEs without touching the application, speeding up reconnaissance.",
+            "recommendation": "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+            "remediation": "Server: nginx",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-511",
+            "title": "X-XSS-Protection filtering enabled",
+            "severity": "LOW",
+            "category": "deprecated",
+            "header": "x-xss-protection",
+            "value": "1",
+            "reason": "X-XSS-Protection is set to '1'; the legacy auditor is removed from modern browsers and was itself a source of vulnerabilities.",
+            "impact": "Value '1' without mode=block enables legacy filtering that was itself exploitable for XS-leaks and content injection in older browsers.",
+            "recommendation": "Set X-XSS-Protection: 0 and deploy a CSP instead.",
+            "remediation": "X-XSS-Protection: 0",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-XSS-Protection"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-515",
+            "title": "Permissive X-Permitted-Cross-Domain-Policies",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "x-permitted-cross-domain-policies",
+            "value": "all",
+            "reason": "X-Permitted-Cross-Domain-Policies is 'all' instead of 'none'.",
+            "impact": "Allowing cross-domain policy files lets legacy Adobe clients (Flash/Acrobat) read data from this origin.",
+            "recommendation": "Set X-Permitted-Cross-Domain-Policies: none unless a legacy client requires otherwise.",
+            "remediation": "X-Permitted-Cross-Domain-Policies: none",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-234",
+            "title": "Deprecated Feature-Policy header in use",
+            "severity": "INFO",
+            "category": "deprecated",
+            "header": "feature-policy",
+            "value": "camera 'none'; microphone 'none'",
+            "reason": "The deprecated Feature-Policy header is still being sent.",
+            "impact": "Feature-Policy has been renamed to Permissions-Policy; modern browsers ignore the old header and its syntax differs.",
+            "recommendation": "Emit Permissions-Policy (structured syntax). Keep Feature-Policy only if you must support very old browsers.",
+            "remediation": "Permissions-Policy: camera=(), microphone=()",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-304",
+            "title": "Missing Cross-Origin-Embedder-Policy",
+            "severity": "INFO",
+            "category": "cross-origin",
+            "header": "cross-origin-embedder-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Embedder-Policy header was returned.",
+            "impact": "Without COEP the document cannot become cross-origin isolated, so powerful APIs (SharedArrayBuffer, high-resolution timers) stay disabled and Spectre-class mitigations are weaker.",
+            "recommendation": "Send Cross-Origin-Embedder-Policy: require-corp (or credentialless) together with COOP: same-origin when you need cross-origin isolation.",
+            "remediation": "Cross-Origin-Embedder-Policy: require-corp",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-503",
+            "title": "Infrastructure detail disclosed via Via",
+            "severity": "INFO",
+            "category": "disclosure",
+            "header": "via",
+            "value": "1.1 internal-cache-03.dc1.local",
+            "reason": "Via exposes infrastructure detail: 1.1 internal-cache-03.dc1.local.",
+            "impact": "Headers such as Via, X-Backend-Server or X-Served-By reveal internal hostnames and proxy topology that help an attacker map the environment.",
+            "recommendation": "Strip internal routing headers at the edge before responses leave the perimeter.",
+            "remediation": null,
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-504",
+            "title": "Generator / CMS disclosed",
+            "severity": "INFO",
+            "category": "disclosure",
+            "header": "x-generator",
+            "value": "Drupal 7 (https://www.drupal.org)",
+            "reason": "X-Generator discloses: Drupal 7 (https://www.drupal.org).",
+            "impact": "Identifying the CMS and version narrows down which plugin vulnerabilities to try.",
+            "recommendation": "Disable generator headers/meta tags in the CMS configuration.",
+            "remediation": null,
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-512",
+            "title": "Deprecated Expect-CT header present",
+            "severity": "INFO",
+            "category": "deprecated",
+            "header": "expect-ct",
+            "value": "max-age=86400, enforce",
+            "reason": "The obsolete Expect-CT header is still sent.",
+            "impact": "Certificate Transparency is now enforced by browsers automatically; Expect-CT is obsolete and ignored.",
+            "recommendation": "Remove the header.",
+            "remediation": null,
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Expect-CT"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-514",
+            "title": "Legacy Pragma header present",
+            "severity": "INFO",
+            "category": "deprecated",
+            "header": "pragma",
+            "value": "no-cache",
+            "reason": "The HTTP/1.0 Pragma header is still present.",
+            "impact": "Pragma: no-cache is an HTTP/1.0 relic. It is harmless but indicates cache policy may not have been reviewed for modern clients.",
+            "recommendation": "Rely on Cache-Control; keep Pragma only if HTTP/1.0 intermediaries still matter.",
+            "remediation": "Cache-Control: no-store",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Pragma"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-600",
+            "title": "No Cache-Control header",
+            "severity": "INFO",
+            "category": "caching",
+            "header": "cache-control",
+            "value": null,
+            "reason": "No Cache-Control header was returned.",
+            "impact": "Without an explicit policy, heuristic caching by browsers and shared proxies decides how long the response is stored.",
+            "recommendation": "Set an explicit policy: no-store for authenticated pages, immutable long max-age for fingerprinted static assets.",
+            "remediation": "Cache-Control: no-store",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cache-Control"
+            ],
+            "metadata": {}
+          }
+        ],
+        "csp": {
+          "present": false,
+          "enforced": false,
+          "report_only_present": false,
+          "raw": null,
+          "directives": {},
+          "uses_nonce": false,
+          "uses_hash": false,
+          "strict_dynamic": false,
+          "strict": false,
+          "host_sources": [],
+          "frame_ancestors": null,
+          "checks": [
+            {
+              "label": "Content-Security-Policy",
+              "status": "HIGH",
+              "detail": "not returned"
+            }
+          ],
+          "directive_rows": []
+        },
+        "hsts": {
+          "present": false,
+          "raw": null,
+          "max_age": null,
+          "include_subdomains": false,
+          "preload": false,
+          "valid": true,
+          "rows": [
+            {
+              "label": "Header present",
+              "status": "INFO",
+              "detail": "not returned"
+            }
+          ]
+        },
+        "permissions_policy": {
+          "present": false,
+          "raw": null,
+          "directives": {},
+          "unrestricted": [],
+          "restricted": [],
+          "malformed": []
+        },
+        "cross_origin": {
+          "coop": null,
+          "corp": null,
+          "coep": null,
+          "cross_origin_isolated": false
+        },
+        "cookies": {
+          "count": 0,
+          "insecure_count": 0,
+          "cookies": []
+        },
+        "cors": {
+          "present": false,
+          "allow_origin": null,
+          "allow_credentials": false,
+          "allow_methods": [],
+          "allow_headers": [],
+          "expose_headers": [],
+          "max_age": null,
+          "vary_origin": false,
+          "reflects_origin": false,
+          "probe_origin": "https://headerspecter.invalid",
+          "probe_performed": true,
+          "checks": [
+            {
+              "label": "CORS headers",
+              "status": "PASS",
+              "detail": "none returned — resource is same-origin only"
+            }
+          ]
+        },
+        "redirects": {
+          "count": 0,
+          "upgraded_to_https": false,
+          "downgraded_to_http": false,
+          "cross_host": false,
+          "looped": false,
+          "final_url": "http://127.0.0.1:8080/legacy",
+          "final_status": 200,
+          "hops": []
+        },
+        "tls": null,
+        "tls_checks": [
+          {
+            "label": "HTTPS",
+            "status": "HIGH",
+            "detail": "not in use — traffic is sent in clear text"
+          }
+        ],
+        "framing_checks": [
+          {
+            "label": "X-Frame-Options",
+            "status": "MEDIUM",
+            "detail": "missing"
+          }
+        ],
+        "caching_checks": [
+          {
+            "label": "Cache-Control",
+            "status": "INFO",
+            "detail": "not set — heuristic caching applies"
+          },
+          {
+            "label": "Pragma",
+            "status": "INFO",
+            "detail": "no-cache (LEGACY)"
+          }
+        ],
+        "disclosure": [
+          {
+            "header": "Server",
+            "value": "HeaderSpecterDemo/1.0, Apache/2.4.29 (Ubuntu)",
+            "severity": "LOW",
+            "note": "Version disclosed"
+          },
+          {
+            "header": "Via",
+            "value": "1.1 internal-cache-03.dc1.local",
+            "severity": "INFO",
+            "note": "Proxy / CDN chain"
+          },
+          {
+            "header": "X-Generator",
+            "value": "Drupal 7 (https://www.drupal.org)",
+            "severity": "INFO",
+            "note": "Generator/CMS disclosed"
+          }
+        ],
+        "recommendations": [
+          "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+          "Deploy a restrictive CSP tailored to the application's real resource needs.",
+          "Send CSP frame-ancestors 'none' (modern) and X-Frame-Options: DENY (legacy clients) for pages that must never be framed.",
+          "Send X-Content-Type-Options: nosniff on every response and make sure Content-Type values are correct.",
+          "Remove Public-Key-Pins entirely; use Certificate Transparency monitoring and CAA records instead.",
+          "Send Referrer-Policy: strict-origin-when-cross-origin (or no-referrer for the most privacy-sensitive applications).",
+          "Send a deny-by-default Permissions-Policy and only enable what the app needs.",
+          "Send Cross-Origin-Opener-Policy: same-origin (use same-origin-allow-popups when OAuth popups are required)."
+        ],
+        "policy": null
+      },
+      "meta": {
+        "scanner": "httpx",
+        "proxy": null,
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0",
+        "body_bytes_read": 210,
+        "total_ms": 19.34,
+        "probes": [
+          "cors"
+        ]
+      }
+    },
+    {
+      "tool": "HeaderSpecter",
+      "version": "1.0.0",
+      "schema": 1,
+      "target": "http://127.0.0.1:8080/api",
+      "url": "http://127.0.0.1:8080/api",
+      "final_url": "http://127.0.0.1:8080/api",
+      "scanned_at": "2026-09-25T12:09:48+00:00",
+      "status_code": 200,
+      "reason": "OK",
+      "http_version": "HTTP/1.0",
+      "elapsed_ms": 9.43,
+      "ok": true,
+      "error": null,
+      "error_kind": null,
+      "hint": null,
+      "score": 19.0,
+      "grade": "F",
+      "headers": [
+        {
+          "name": "server",
+          "value": "HeaderSpecterDemo/1.0"
+        },
+        {
+          "name": "date",
+          "value": "Fri, 25 Sep 2026 12:09:48 GMT"
+        },
+        {
+          "name": "content-type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "name": "content-length",
+          "value": "27"
+        },
+        {
+          "name": "content-type",
+          "value": "application/json"
+        },
+        {
+          "name": "access-control-allow-credentials",
+          "value": "true"
+        },
+        {
+          "name": "access-control-expose-headers",
+          "value": "X-Internal-Request-Id, X-Debug-Token"
+        },
+        {
+          "name": "cache-control",
+          "value": "no-store"
+        },
+        {
+          "name": "x-backend-server",
+          "value": "api-node-7.internal.lab"
+        },
+        {
+          "name": "access-control-allow-origin",
+          "value": "*"
+        }
+      ],
+      "request_headers": {
+        "host": "127.0.0.1:8080",
+        "connection": "keep-alive",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US,en;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "cache-control": "no-cache",
+        "pragma": "no-cache",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0"
+      },
+      "http_probe": null,
+      "analysis": {
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 3,
+          "MEDIUM": 2,
+          "LOW": 6,
+          "INFO": 4,
+          "PASS": 0
+        },
+        "score": {
+          "score": 19.0,
+          "base_score": 100.0,
+          "grade": "F",
+          "total_deducted": 80.95,
+          "total_bonus": 0,
+          "counts": {
+            "CRITICAL": 0,
+            "HIGH": 3,
+            "MEDIUM": 2,
+            "LOW": 6,
+            "INFO": 4,
+            "PASS": 0
+          },
+          "category_totals": {
+            "transport": 15.0,
+            "csp": 18.75,
+            "cors": 20.0,
+            "framing": 7.0,
+            "content": 7.0,
+            "referrer": 2.7,
+            "permissions": 2.55,
+            "cross-origin": 5.15,
+            "disclosure": 2.8
+          },
+          "deductions": [
+            {
+              "finding_id": "HS-007",
+              "title": "Target served over plaintext HTTP",
+              "severity": "HIGH",
+              "category": "transport",
+              "header": null,
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-100",
+              "title": "Missing Content-Security-Policy",
+              "severity": "HIGH",
+              "category": "csp",
+              "header": "content-security-policy",
+              "raw_points": 18.75,
+              "applied_points": 18.75,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-312",
+              "title": "CORS reflects an arbitrary origin with credentials",
+              "severity": "HIGH",
+              "category": "cors",
+              "header": "access-control-allow-origin",
+              "raw_points": 16.5,
+              "applied_points": 16.5,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-200",
+              "title": "No clickjacking protection",
+              "severity": "MEDIUM",
+              "category": "framing",
+              "header": "x-frame-options",
+              "raw_points": 7.0,
+              "applied_points": 7.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-210",
+              "title": "Missing X-Content-Type-Options",
+              "severity": "MEDIUM",
+              "category": "content",
+              "header": "x-content-type-options",
+              "raw_points": 7.0,
+              "applied_points": 7.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-220",
+              "title": "Missing Referrer-Policy",
+              "severity": "LOW",
+              "category": "referrer",
+              "header": "referrer-policy",
+              "raw_points": 2.7,
+              "applied_points": 2.7,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-230",
+              "title": "Missing Permissions-Policy",
+              "severity": "LOW",
+              "category": "permissions",
+              "header": "permissions-policy",
+              "raw_points": 2.55,
+              "applied_points": 2.55,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-300",
+              "title": "Missing Cross-Origin-Opener-Policy",
+              "severity": "LOW",
+              "category": "cross-origin",
+              "header": "cross-origin-opener-policy",
+              "raw_points": 2.4,
+              "applied_points": 2.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-302",
+              "title": "Missing Cross-Origin-Resource-Policy",
+              "severity": "LOW",
+              "category": "cross-origin",
+              "header": "cross-origin-resource-policy",
+              "raw_points": 2.4,
+              "applied_points": 2.4,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-318",
+              "title": "Dynamic CORS response is missing Vary: Origin",
+              "severity": "LOW",
+              "category": "cors",
+              "header": "vary",
+              "raw_points": 3.0,
+              "applied_points": 3.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-500",
+              "title": "Server software version disclosed",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "server",
+              "raw_points": 1.8,
+              "applied_points": 1.8,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-304",
+              "title": "Missing Cross-Origin-Embedder-Policy",
+              "severity": "INFO",
+              "category": "cross-origin",
+              "header": "cross-origin-embedder-policy",
+              "raw_points": 0.35,
+              "applied_points": 0.35,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-319",
+              "title": "CORS exposes additional response headers",
+              "severity": "INFO",
+              "category": "cors",
+              "header": "access-control-expose-headers",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-503",
+              "title": "Infrastructure detail disclosed via X-Backend-Server",
+              "severity": "INFO",
+              "category": "disclosure",
+              "header": "x-backend-server",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-516",
+              "title": "Missing X-Permitted-Cross-Domain-Policies",
+              "severity": "INFO",
+              "category": "disclosure",
+              "header": "x-permitted-cross-domain-policies",
+              "raw_points": 0.5,
+              "applied_points": 0.5,
+              "capped": false
+            }
+          ],
+          "bonuses": []
+        },
+        "header_checks": [
+          {
+            "header": "Content-Security-Policy",
+            "status": "HIGH",
+            "state": "MISSING",
+            "value": null,
+            "note": "No browser-side content policy"
+          },
+          {
+            "header": "Strict-Transport-Security",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Not applicable over plaintext HTTP"
+          },
+          {
+            "header": "X-Content-Type-Options",
+            "status": "MEDIUM",
+            "state": "MISSING",
+            "value": null,
+            "note": "MIME sniffing not disabled"
+          },
+          {
+            "header": "X-Frame-Options",
+            "status": "MEDIUM",
+            "state": "MISSING",
+            "value": null,
+            "note": "No framing protection"
+          },
+          {
+            "header": "Referrer-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browser default applies"
+          },
+          {
+            "header": "Permissions-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browser feature defaults apply"
+          },
+          {
+            "header": "Cross-Origin-Opener-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Browsing context not isolated"
+          },
+          {
+            "header": "Cross-Origin-Resource-Policy",
+            "status": "LOW",
+            "state": "MISSING",
+            "value": null,
+            "note": "Embedding not restricted"
+          },
+          {
+            "header": "Cross-Origin-Embedder-Policy",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Not cross-origin isolated"
+          }
+        ],
+        "extra_checks": [
+          {
+            "header": "Access-Control-Allow-Origin",
+            "status": "HIGH",
+            "state": "FAIL",
+            "value": "https://headerspecter.invalid",
+            "note": "Cross-origin sharing enabled"
+          },
+          {
+            "header": "X-Permitted-Cross-Domain-Policies",
+            "status": "INFO",
+            "state": "MISSING",
+            "value": null,
+            "note": "Legacy Adobe clients fall back to crossdomain.xml"
+          }
+        ],
+        "findings": [
+          {
+            "id": "HS-007",
+            "title": "Target served over plaintext HTTP",
+            "severity": "HIGH",
+            "category": "transport",
+            "header": null,
+            "value": "http://127.0.0.1:8080/api",
+            "reason": "The target was served over plaintext HTTP (http://127.0.0.1:8080/api); no transport encryption protects the response or its cookies.",
+            "impact": "All traffic — including cookies, tokens and form data — is transmitted in the clear and can be read or modified by anyone on the network path.",
+            "recommendation": "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-100",
+            "title": "Missing Content-Security-Policy",
+            "severity": "HIGH",
+            "category": "csp",
+            "header": "content-security-policy",
+            "value": null,
+            "reason": "No Content-Security-Policy header was returned.",
+            "impact": "No CSP was detected, so the browser has no policy-level defence against injected scripts, unexpected resource loads or data exfiltration to attacker domains.",
+            "recommendation": "Deploy a restrictive CSP tailored to the application's real resource needs. Start in Report-Only mode, collect violations, then enforce.",
+            "remediation": "Content-Security-Policy: default-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Content-Security-Policy",
+              "https://csp.withgoogle.com/docs/strict-csp.html"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-312",
+            "title": "CORS reflects an arbitrary origin with credentials",
+            "severity": "HIGH",
+            "category": "cors",
+            "header": "access-control-allow-origin",
+            "value": "https://headerspecter.invalid + credentials",
+            "reason": "The server reflected the probe origin https://headerspecter.invalid and allows credentials, so any site could read authenticated responses.",
+            "impact": "The server echoed the probe origin back and allows credentials, so any attacker site can make authenticated cross-origin requests and read the responses — a direct account-data disclosure path.",
+            "recommendation": "Validate Origin against a strict allow-list before echoing it, and only enable credentials for origins you control.",
+            "remediation": "Access-Control-Allow-Origin: https://app.example.com\nAccess-Control-Allow-Credentials: true\nVary: Origin",
+            "references": [
+              "https://portswigger.net/web-security/cors"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-200",
+            "title": "No clickjacking protection",
+            "severity": "MEDIUM",
+            "category": "framing",
+            "header": "x-frame-options",
+            "value": null,
+            "reason": "Neither X-Frame-Options nor CSP frame-ancestors was returned.",
+            "impact": "Neither X-Frame-Options nor CSP frame-ancestors was returned, so the page can be embedded in a hidden iframe and used for clickjacking against logged-in users.",
+            "recommendation": "Send CSP frame-ancestors 'none' (modern) and X-Frame-Options: DENY (legacy clients) for pages that must never be framed.",
+            "remediation": "Content-Security-Policy: frame-ancestors 'none'\nX-Frame-Options: DENY",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Frame-Options"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-210",
+            "title": "Missing X-Content-Type-Options",
+            "severity": "MEDIUM",
+            "category": "content",
+            "header": "x-content-type-options",
+            "value": null,
+            "reason": "X-Content-Type-Options was not returned.",
+            "impact": "Without nosniff, browsers may MIME-sniff responses and execute a user-uploaded or text response as script or stylesheet.",
+            "recommendation": "Send X-Content-Type-Options: nosniff on every response and make sure Content-Type values are correct.",
+            "remediation": "X-Content-Type-Options: nosniff",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/X-Content-Type-Options"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-220",
+            "title": "Missing Referrer-Policy",
+            "severity": "LOW",
+            "category": "referrer",
+            "header": "referrer-policy",
+            "value": null,
+            "reason": "No Referrer-Policy header was returned.",
+            "impact": "Browser defaults vary. Full URLs — including path, query string, tokens and internal identifiers — can leak to third-party sites through the Referer header.",
+            "recommendation": "Send Referrer-Policy: strict-origin-when-cross-origin (or no-referrer for the most privacy-sensitive applications).",
+            "remediation": "Referrer-Policy: strict-origin-when-cross-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Referrer-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-230",
+            "title": "Missing Permissions-Policy",
+            "severity": "LOW",
+            "category": "permissions",
+            "header": "permissions-policy",
+            "value": null,
+            "reason": "No Permissions-Policy header was returned.",
+            "impact": "Powerful browser features (camera, microphone, geolocation, payment) are left at their default availability for the page and for any embedded third-party frames.",
+            "recommendation": "Send a deny-by-default Permissions-Policy and only enable what the app needs.",
+            "remediation": "Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Permissions-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-300",
+            "title": "Missing Cross-Origin-Opener-Policy",
+            "severity": "LOW",
+            "category": "cross-origin",
+            "header": "cross-origin-opener-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Opener-Policy header was returned.",
+            "impact": "Without COOP, a window opened by (or opening) this page keeps a cross-origin reference to it, enabling XS-Leaks and tab-nabbing style attacks.",
+            "recommendation": "Send Cross-Origin-Opener-Policy: same-origin (use same-origin-allow-popups when OAuth popups are required).",
+            "remediation": "Cross-Origin-Opener-Policy: same-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Opener-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-302",
+            "title": "Missing Cross-Origin-Resource-Policy",
+            "severity": "LOW",
+            "category": "cross-origin",
+            "header": "cross-origin-resource-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Resource-Policy header was returned.",
+            "impact": "CORP tells the browser who may embed this resource. Without it, responses can be pulled into cross-origin documents and abused for side-channel (Spectre-class) leaks.",
+            "recommendation": "Send Cross-Origin-Resource-Policy: same-origin for private resources, same-site for shared internal assets, cross-origin only for public CDN content.",
+            "remediation": "Cross-Origin-Resource-Policy: same-origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Resource-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-318",
+            "title": "Dynamic CORS response is missing Vary: Origin",
+            "severity": "LOW",
+            "category": "cors",
+            "header": "vary",
+            "value": "https://headerspecter.invalid",
+            "reason": "The allowed origin depends on the request but the response does not include Vary: Origin, so caches may reuse it for other origins.",
+            "impact": "When the allowed origin depends on the request but Vary: Origin is absent, shared caches and CDNs can serve one origin's CORS headers to another origin.",
+            "recommendation": "Add Vary: Origin to every response whose CORS headers depend on the request origin.",
+            "remediation": "Vary: Origin",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Vary"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-500",
+            "title": "Server software version disclosed",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "server",
+            "value": "HeaderSpecterDemo/1.0",
+            "reason": "The Server header exposes a specific version: HeaderSpecterDemo/1.0.",
+            "impact": "Exact software versions let an attacker map the target to known CVEs without touching the application, speeding up reconnaissance.",
+            "recommendation": "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+            "remediation": "Server: nginx",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-304",
+            "title": "Missing Cross-Origin-Embedder-Policy",
+            "severity": "INFO",
+            "category": "cross-origin",
+            "header": "cross-origin-embedder-policy",
+            "value": null,
+            "reason": "No Cross-Origin-Embedder-Policy header was returned.",
+            "impact": "Without COEP the document cannot become cross-origin isolated, so powerful APIs (SharedArrayBuffer, high-resolution timers) stay disabled and Spectre-class mitigations are weaker.",
+            "recommendation": "Send Cross-Origin-Embedder-Policy: require-corp (or credentialless) together with COOP: same-origin when you need cross-origin isolation.",
+            "remediation": "Cross-Origin-Embedder-Policy: require-corp",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Cross-Origin-Embedder-Policy"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-319",
+            "title": "CORS exposes additional response headers",
+            "severity": "INFO",
+            "category": "cors",
+            "header": "access-control-expose-headers",
+            "value": "X-Internal-Request-Id, X-Debug-Token",
+            "reason": "Response headers exposed to cross-origin scripts: X-Internal-Request-Id, X-Debug-Token.",
+            "impact": "Exposed headers become readable by cross-origin scripts; wildcards may reveal internal or sensitive metadata.",
+            "recommendation": "Expose only the headers clients genuinely need.",
+            "remediation": "Access-Control-Expose-Headers: Content-Length, X-Request-Id",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Access-Control-Expose-Headers"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-503",
+            "title": "Infrastructure detail disclosed via X-Backend-Server",
+            "severity": "INFO",
+            "category": "disclosure",
+            "header": "x-backend-server",
+            "value": "api-node-7.internal.lab",
+            "reason": "X-Backend-Server exposes infrastructure detail: api-node-7.internal.lab.",
+            "impact": "Headers such as Via, X-Backend-Server or X-Served-By reveal internal hostnames and proxy topology that help an attacker map the environment.",
+            "recommendation": "Strip internal routing headers at the edge before responses leave the perimeter.",
+            "remediation": null,
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-516",
+            "title": "Missing X-Permitted-Cross-Domain-Policies",
+            "severity": "INFO",
+            "category": "disclosure",
+            "header": "x-permitted-cross-domain-policies",
+            "value": null,
+            "reason": "X-Permitted-Cross-Domain-Policies was not returned.",
+            "impact": "Legacy Adobe clients fall back to looking for a /crossdomain.xml policy file.",
+            "recommendation": "Send X-Permitted-Cross-Domain-Policies: none (defence in depth, zero cost).",
+            "remediation": "X-Permitted-Cross-Domain-Policies: none",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          }
+        ],
+        "csp": {
+          "present": false,
+          "enforced": false,
+          "report_only_present": false,
+          "raw": null,
+          "directives": {},
+          "uses_nonce": false,
+          "uses_hash": false,
+          "strict_dynamic": false,
+          "strict": false,
+          "host_sources": [],
+          "frame_ancestors": null,
+          "checks": [
+            {
+              "label": "Content-Security-Policy",
+              "status": "HIGH",
+              "detail": "not returned"
+            }
+          ],
+          "directive_rows": []
+        },
+        "hsts": {
+          "present": false,
+          "raw": null,
+          "max_age": null,
+          "include_subdomains": false,
+          "preload": false,
+          "valid": true,
+          "rows": [
+            {
+              "label": "Header present",
+              "status": "INFO",
+              "detail": "not returned"
+            }
+          ]
+        },
+        "permissions_policy": {
+          "present": false,
+          "raw": null,
+          "directives": {},
+          "unrestricted": [],
+          "restricted": [],
+          "malformed": []
+        },
+        "cross_origin": {
+          "coop": null,
+          "corp": null,
+          "coep": null,
+          "cross_origin_isolated": false
+        },
+        "cookies": {
+          "count": 0,
+          "insecure_count": 0,
+          "cookies": []
+        },
+        "cors": {
+          "present": true,
+          "allow_origin": "https://headerspecter.invalid",
+          "allow_credentials": true,
+          "allow_methods": [],
+          "allow_headers": [],
+          "expose_headers": [
+            "X-Internal-Request-Id",
+            "X-Debug-Token"
+          ],
+          "max_age": null,
+          "vary_origin": false,
+          "reflects_origin": true,
+          "probe_origin": "https://headerspecter.invalid",
+          "probe_performed": true,
+          "checks": [
+            {
+              "label": "Allow-Origin",
+              "status": "HIGH",
+              "detail": "arbitrary origin reflected with credentials"
+            },
+            {
+              "label": "Allow-Credentials",
+              "status": "MEDIUM",
+              "detail": "true — responses are readable by the allowed origin with cookies attached"
+            },
+            {
+              "label": "Expose-Headers",
+              "status": "INFO",
+              "detail": "X-Internal-Request-Id, X-Debug-Token"
+            },
+            {
+              "label": "Vary: Origin",
+              "status": "LOW",
+              "detail": "missing on a dynamic CORS response"
+            }
+          ]
+        },
+        "redirects": {
+          "count": 0,
+          "upgraded_to_https": false,
+          "downgraded_to_http": false,
+          "cross_host": false,
+          "looped": false,
+          "final_url": "http://127.0.0.1:8080/api",
+          "final_status": 200,
+          "hops": []
+        },
+        "tls": null,
+        "tls_checks": [
+          {
+            "label": "HTTPS",
+            "status": "HIGH",
+            "detail": "not in use — traffic is sent in clear text"
+          }
+        ],
+        "framing_checks": [
+          {
+            "label": "X-Frame-Options",
+            "status": "MEDIUM",
+            "detail": "missing"
+          }
+        ],
+        "caching_checks": [
+          {
+            "label": "Cache-Control",
+            "status": "PASS",
+            "detail": "no-store"
+          }
+        ],
+        "disclosure": [
+          {
+            "header": "Server",
+            "value": "HeaderSpecterDemo/1.0",
+            "severity": "LOW",
+            "note": "Version disclosed"
+          },
+          {
+            "header": "X-Backend-Server",
+            "value": "api-node-7.internal.lab",
+            "severity": "INFO",
+            "note": "Internal backend hostname"
+          }
+        ],
+        "recommendations": [
+          "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+          "Deploy a restrictive CSP tailored to the application's real resource needs.",
+          "Validate Origin against a strict allow-list before echoing it, and only enable credentials for origins you control.",
+          "Send CSP frame-ancestors 'none' (modern) and X-Frame-Options: DENY (legacy clients) for pages that must never be framed.",
+          "Send X-Content-Type-Options: nosniff on every response and make sure Content-Type values are correct.",
+          "Send Referrer-Policy: strict-origin-when-cross-origin (or no-referrer for the most privacy-sensitive applications).",
+          "Send a deny-by-default Permissions-Policy and only enable what the app needs.",
+          "Send Cross-Origin-Opener-Policy: same-origin (use same-origin-allow-popups when OAuth popups are required)."
+        ],
+        "policy": null
+      },
+      "meta": {
+        "scanner": "httpx",
+        "proxy": null,
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0",
+        "body_bytes_read": 27,
+        "total_ms": 19.58,
+        "probes": [
+          "cors"
+        ]
+      }
+    },
+    {
+      "tool": "HeaderSpecter",
+      "version": "1.0.0",
+      "schema": 1,
+      "target": "http://127.0.0.1:8080/redirect",
+      "url": "http://127.0.0.1:8080/redirect",
+      "final_url": "http://127.0.0.1:8080/",
+      "scanned_at": "2026-09-25T12:09:48+00:00",
+      "status_code": 200,
+      "reason": "OK",
+      "http_version": "HTTP/1.0",
+      "elapsed_ms": 22.18,
+      "ok": true,
+      "error": null,
+      "error_kind": null,
+      "hint": null,
+      "score": 71.6,
+      "grade": "C",
+      "headers": [
+        {
+          "name": "server",
+          "value": "HeaderSpecterDemo/1.0"
+        },
+        {
+          "name": "date",
+          "value": "Fri, 25 Sep 2026 12:09:48 GMT"
+        },
+        {
+          "name": "content-type",
+          "value": "text/html; charset=utf-8"
+        },
+        {
+          "name": "content-length",
+          "value": "210"
+        },
+        {
+          "name": "content-security-policy",
+          "value": "default-src 'self'; script-src 'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint"
+        },
+        {
+          "name": "strict-transport-security",
+          "value": "max-age=63072000; includeSubDomains; preload"
+        },
+        {
+          "name": "x-content-type-options",
+          "value": "nosniff"
+        },
+        {
+          "name": "x-frame-options",
+          "value": "DENY"
+        },
+        {
+          "name": "referrer-policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "name": "permissions-policy",
+          "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()"
+        },
+        {
+          "name": "cross-origin-opener-policy",
+          "value": "same-origin"
+        },
+        {
+          "name": "cross-origin-resource-policy",
+          "value": "same-origin"
+        },
+        {
+          "name": "cross-origin-embedder-policy",
+          "value": "require-corp"
+        },
+        {
+          "name": "x-permitted-cross-domain-policies",
+          "value": "none"
+        },
+        {
+          "name": "cache-control",
+          "value": "no-store"
+        },
+        {
+          "name": "reporting-endpoints",
+          "value": "csp-endpoint=\"https://example.com/csp-reports\""
+        },
+        {
+          "name": "set-cookie",
+          "value": "__Host-session=7f3c9a2b; Path=/; Secure; HttpOnly; SameSite=Lax"
+        }
+      ],
+      "request_headers": {
+        "host": "127.0.0.1:8080",
+        "connection": "keep-alive",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "accept-language": "en-US,en;q=0.9",
+        "accept-encoding": "gzip, deflate, br",
+        "cache-control": "no-cache",
+        "pragma": "no-cache",
+        "user-agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0",
+        "cookie": "tracking=1"
+      },
+      "http_probe": null,
+      "analysis": {
+        "counts": {
+          "CRITICAL": 0,
+          "HIGH": 2,
+          "MEDIUM": 0,
+          "LOW": 1,
+          "INFO": 1,
+          "PASS": 0
+        },
+        "score": {
+          "score": 71.6,
+          "base_score": 100.0,
+          "grade": "C",
+          "total_deducted": 32.4,
+          "total_bonus": 5.0,
+          "counts": {
+            "CRITICAL": 0,
+            "HIGH": 2,
+            "MEDIUM": 0,
+            "LOW": 1,
+            "INFO": 1,
+            "PASS": 0
+          },
+          "category_totals": {
+            "transport": 15.6,
+            "cookies": 15.0,
+            "disclosure": 1.8
+          },
+          "deductions": [
+            {
+              "finding_id": "HS-007",
+              "title": "Target served over plaintext HTTP",
+              "severity": "HIGH",
+              "category": "transport",
+              "header": null,
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-407",
+              "title": "Cookie set over plaintext HTTP (__Host-session)",
+              "severity": "HIGH",
+              "category": "cookies",
+              "header": "set-cookie",
+              "raw_points": 15.0,
+              "applied_points": 15.0,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-500",
+              "title": "Server software version disclosed",
+              "severity": "LOW",
+              "category": "disclosure",
+              "header": "server",
+              "raw_points": 1.8,
+              "applied_points": 1.8,
+              "capped": false
+            },
+            {
+              "finding_id": "HS-006",
+              "title": "HSTS sent over plaintext HTTP",
+              "severity": "INFO",
+              "category": "transport",
+              "header": "strict-transport-security",
+              "raw_points": 0.6,
+              "applied_points": 0.6,
+              "capped": false
+            }
+          ],
+          "bonuses": [
+            {
+              "key": "hsts_preload",
+              "reason": "HSTS policy requests preloading",
+              "points": 1.5
+            },
+            {
+              "key": "csp_nonce_or_hash",
+              "reason": "CSP uses nonces or hashes instead of 'unsafe-inline'",
+              "points": 2.0
+            },
+            {
+              "key": "cross_origin_isolated",
+              "reason": "Document is cross-origin isolated (COOP + COEP)",
+              "points": 1.5
+            }
+          ]
+        },
+        "header_checks": [
+          {
+            "header": "Content-Security-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "default-src 'self'; script-src 'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint",
+            "note": "Strict nonce-based policy"
+          },
+          {
+            "header": "Strict-Transport-Security",
+            "status": "INFO",
+            "state": "INFO",
+            "value": "max-age=63072000; includeSubDomains; preload",
+            "note": "Policy can be strengthened"
+          },
+          {
+            "header": "X-Content-Type-Options",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "nosniff",
+            "note": "MIME sniffing disabled"
+          },
+          {
+            "header": "X-Frame-Options",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "DENY",
+            "note": "DENY — legacy control"
+          },
+          {
+            "header": "Referrer-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "strict-origin-when-cross-origin",
+            "note": "Effective policy: strict-origin-when-cross-origin"
+          },
+          {
+            "header": "Permissions-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+            "note": "9 directive(s), 0 unrestricted"
+          },
+          {
+            "header": "Cross-Origin-Opener-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "same-origin",
+            "note": "Browsing context isolated"
+          },
+          {
+            "header": "Cross-Origin-Resource-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "same-origin",
+            "note": "Embedding restricted"
+          },
+          {
+            "header": "Cross-Origin-Embedder-Policy",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "require-corp",
+            "note": "Isolation capable"
+          }
+        ],
+        "extra_checks": [
+          {
+            "header": "Access-Control-Allow-Origin",
+            "status": "PASS",
+            "state": "PASS",
+            "value": null,
+            "note": "No cross-origin sharing configured"
+          },
+          {
+            "header": "X-Permitted-Cross-Domain-Policies",
+            "status": "PASS",
+            "state": "PASS",
+            "value": "none",
+            "note": "Policy files denied"
+          }
+        ],
+        "findings": [
+          {
+            "id": "HS-007",
+            "title": "Target served over plaintext HTTP",
+            "severity": "HIGH",
+            "category": "transport",
+            "header": null,
+            "value": "http://127.0.0.1:8080/",
+            "reason": "The target was served over plaintext HTTP (http://127.0.0.1:8080/); no transport encryption protects the response or its cookies.",
+            "impact": "All traffic — including cookies, tokens and form data — is transmitted in the clear and can be read or modified by anyone on the network path.",
+            "recommendation": "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+            "remediation": "Strict-Transport-Security: max-age=31536000; includeSubDomains",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-407",
+            "title": "Cookie set over plaintext HTTP (__Host-session)",
+            "severity": "HIGH",
+            "category": "cookies",
+            "header": "set-cookie",
+            "value": "__Host-session=7f3c9a2b; Path=/; Secure; HttpOnly; SameSite=Lax",
+            "reason": "Cookie '__Host-session' was set over a plaintext HTTP response.",
+            "impact": "The cookie was delivered over an unencrypted channel and can be read by anyone on the path, regardless of its attributes.",
+            "recommendation": "Serve the application over HTTPS only and set cookies from HTTPS responses.",
+            "remediation": "Set-Cookie: session=...; Secure; HttpOnly; SameSite=Lax",
+            "references": [
+              "https://developer.mozilla.org/docs/Web/HTTP/Headers/Set-Cookie"
+            ],
+            "metadata": {
+              "cookie": "__Host-session"
+            }
+          },
+          {
+            "id": "HS-500",
+            "title": "Server software version disclosed",
+            "severity": "LOW",
+            "category": "disclosure",
+            "header": "server",
+            "value": "HeaderSpecterDemo/1.0",
+            "reason": "The Server header exposes a specific version: HeaderSpecterDemo/1.0.",
+            "impact": "Exact software versions let an attacker map the target to known CVEs without touching the application, speeding up reconnaissance.",
+            "recommendation": "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+            "remediation": "Server: nginx",
+            "references": [
+              "https://owasp.org/www-project-secure-headers/"
+            ],
+            "metadata": {}
+          },
+          {
+            "id": "HS-006",
+            "title": "HSTS sent over plaintext HTTP",
+            "severity": "INFO",
+            "category": "transport",
+            "header": "strict-transport-security",
+            "value": "max-age=63072000; includeSubDomains; preload",
+            "reason": "The HSTS header was returned over HTTP, where browsers ignore it.",
+            "impact": "HSTS headers received over HTTP are ignored by browsers, so the policy is not actually applied.",
+            "recommendation": "Redirect HTTP to HTTPS first and send the HSTS header on the HTTPS response.",
+            "remediation": null,
+            "references": [
+              "https://www.rfc-editor.org/rfc/rfc6797#section-8.1"
+            ],
+            "metadata": {}
+          }
+        ],
+        "csp": {
+          "present": true,
+          "enforced": true,
+          "report_only_present": false,
+          "raw": "default-src 'self'; script-src 'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint",
+          "directives": {
+            "default-src": [
+              "'self'"
+            ],
+            "script-src": [
+              "'self'",
+              "'nonce-r4nd0mBASE64value123456'",
+              "'strict-dynamic'"
+            ],
+            "style-src": [
+              "'self'"
+            ],
+            "img-src": [
+              "'self'",
+              "data:"
+            ],
+            "font-src": [
+              "'self'"
+            ],
+            "connect-src": [
+              "'self'"
+            ],
+            "object-src": [
+              "'none'"
+            ],
+            "base-uri": [
+              "'self'"
+            ],
+            "form-action": [
+              "'self'"
+            ],
+            "frame-ancestors": [
+              "'none'"
+            ],
+            "upgrade-insecure-requests": [],
+            "report-to": [
+              "csp-endpoint"
+            ]
+          },
+          "uses_nonce": true,
+          "uses_hash": false,
+          "strict_dynamic": true,
+          "strict": true,
+          "host_sources": [
+            "csp-endpoint"
+          ],
+          "frame_ancestors": [
+            "'none'"
+          ],
+          "checks": [
+            {
+              "label": "Enforcement",
+              "status": "PASS",
+              "detail": "Enforcing policy present"
+            },
+            {
+              "label": "'unsafe-inline' (scripts)",
+              "status": "PASS",
+              "detail": "not allowed"
+            },
+            {
+              "label": "'unsafe-eval'",
+              "status": "PASS",
+              "detail": "not allowed"
+            },
+            {
+              "label": "Script policy style",
+              "status": "PASS",
+              "detail": "nonce-based policy with 'strict-dynamic'"
+            },
+            {
+              "label": "Wildcard sources",
+              "status": "PASS",
+              "detail": "none detected"
+            },
+            {
+              "label": "default-src",
+              "status": "PASS",
+              "detail": "'self'"
+            },
+            {
+              "label": "object-src",
+              "status": "PASS",
+              "detail": "'none' — plugin content blocked"
+            },
+            {
+              "label": "base-uri",
+              "status": "PASS",
+              "detail": "'self'"
+            },
+            {
+              "label": "frame-ancestors",
+              "status": "PASS",
+              "detail": "'none'"
+            },
+            {
+              "label": "form-action",
+              "status": "PASS",
+              "detail": "'self'"
+            },
+            {
+              "label": "Violation reporting",
+              "status": "PASS",
+              "detail": "csp-endpoint"
+            },
+            {
+              "label": "Allow-list size",
+              "status": "PASS",
+              "detail": "1 host source(s)"
+            }
+          ],
+          "directive_rows": [
+            {
+              "directive": "default-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "script-src",
+              "value": "'self' 'nonce-r4nd0mBASE64value123456' 'strict-dynamic'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "style-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "img-src",
+              "value": "'self' data:",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "font-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "connect-src",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "frame-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "object-src",
+              "value": "'none'",
+              "status": "PASS",
+              "note": "blocked"
+            },
+            {
+              "directive": "media-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "manifest-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "worker-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "child-src",
+              "value": "'self'",
+              "status": "INFO",
+              "note": "inherited from default-src"
+            },
+            {
+              "directive": "base-uri",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "form-action",
+              "value": "'self'",
+              "status": "PASS",
+              "note": "explicit policy"
+            },
+            {
+              "directive": "frame-ancestors",
+              "value": "'none'",
+              "status": "PASS",
+              "note": "blocked"
+            },
+            {
+              "directive": "upgrade-insecure-requests",
+              "value": "enabled",
+              "status": "PASS",
+              "note": "mixed-content mitigation"
+            },
+            {
+              "directive": "report-to",
+              "value": "csp-endpoint",
+              "status": "PASS",
+              "note": "explicit policy"
+            }
+          ]
+        },
+        "hsts": {
+          "present": true,
+          "raw": "max-age=63072000; includeSubDomains; preload",
+          "max_age": 63072000,
+          "include_subdomains": true,
+          "preload": true,
+          "valid": true,
+          "rows": [
+            {
+              "label": "Header present",
+              "status": "PASS",
+              "detail": "max-age=63072000; includeSubDomains; preload"
+            },
+            {
+              "label": "Applied by browsers",
+              "status": "INFO",
+              "detail": "ignored over plaintext HTTP"
+            },
+            {
+              "label": "max-age",
+              "status": "PASS",
+              "detail": "63072000 s"
+            },
+            {
+              "label": "includeSubDomains",
+              "status": "PASS",
+              "detail": "present"
+            },
+            {
+              "label": "preload",
+              "status": "PASS",
+              "detail": "requested"
+            }
+          ]
+        },
+        "permissions_policy": {
+          "present": true,
+          "raw": "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()",
+          "directives": {
+            "accelerometer": [],
+            "camera": [],
+            "geolocation": [],
+            "gyroscope": [],
+            "magnetometer": [],
+            "microphone": [],
+            "payment": [],
+            "usb": [],
+            "interest-cohort": []
+          },
+          "unrestricted": [],
+          "restricted": [
+            "accelerometer",
+            "camera",
+            "geolocation",
+            "gyroscope",
+            "magnetometer",
+            "microphone",
+            "payment",
+            "usb",
+            "interest-cohort"
+          ],
+          "malformed": []
+        },
+        "cross_origin": {
+          "coop": "same-origin",
+          "corp": "same-origin",
+          "coep": "require-corp",
+          "cross_origin_isolated": true
+        },
+        "cookies": {
+          "count": 1,
+          "insecure_count": 1,
+          "cookies": [
+            {
+              "name": "__Host-session",
+              "value_preview": "7f3c…(8 chars, redacted)",
+              "secure": true,
+              "http_only": true,
+              "same_site": "Lax",
+              "domain": null,
+              "path": "/",
+              "max_age": null,
+              "expires": null,
+              "lifetime_seconds": null,
+              "prefix": "__Host-",
+              "session_like": true,
+              "source": "response",
+              "status": "HIGH",
+              "issues": [
+                "set over HTTP"
+              ]
+            }
+          ]
+        },
+        "cors": {
+          "present": false,
+          "allow_origin": null,
+          "allow_credentials": false,
+          "allow_methods": [],
+          "allow_headers": [],
+          "expose_headers": [],
+          "max_age": null,
+          "vary_origin": false,
+          "reflects_origin": false,
+          "probe_origin": "https://headerspecter.invalid",
+          "probe_performed": true,
+          "checks": [
+            {
+              "label": "CORS headers",
+              "status": "PASS",
+              "detail": "none returned — resource is same-origin only"
+            }
+          ]
+        },
+        "redirects": {
+          "count": 2,
+          "upgraded_to_https": false,
+          "downgraded_to_http": false,
+          "cross_host": false,
+          "looped": false,
+          "final_url": "http://127.0.0.1:8080/",
+          "final_status": 200,
+          "hops": [
+            {
+              "index": 1,
+              "url": "http://127.0.0.1:8080/redirect",
+              "status_code": 301,
+              "location": "/redirect2",
+              "elapsed_ms": 7.396,
+              "scheme": "http",
+              "host": "127.0.0.1",
+              "set_cookies": 0
+            },
+            {
+              "index": 2,
+              "url": "http://127.0.0.1:8080/redirect2",
+              "status_code": 302,
+              "location": "/",
+              "elapsed_ms": 5.5409999999999995,
+              "scheme": "http",
+              "host": "127.0.0.1",
+              "set_cookies": 0
+            }
+          ]
+        },
+        "tls": null,
+        "tls_checks": [
+          {
+            "label": "HTTPS",
+            "status": "HIGH",
+            "detail": "not in use — traffic is sent in clear text"
+          }
+        ],
+        "framing_checks": [
+          {
+            "label": "X-Frame-Options",
+            "status": "PASS",
+            "detail": "DENY (LEGACY header, still honoured)"
+          },
+          {
+            "label": "XFO vs frame-ancestors",
+            "status": "PASS",
+            "detail": "consistent"
+          }
+        ],
+        "caching_checks": [
+          {
+            "label": "Cache-Control",
+            "status": "PASS",
+            "detail": "no-store"
+          }
+        ],
+        "disclosure": [
+          {
+            "header": "Server",
+            "value": "HeaderSpecterDemo/1.0",
+            "severity": "LOW",
+            "note": "Version disclosed"
+          }
+        ],
+        "recommendations": [
+          "Terminate TLS for this host and permanently redirect HTTP to HTTPS.",
+          "Serve the application over HTTPS only and set cookies from HTTPS responses.",
+          "Suppress or genericise the Server banner (nginx: server_tokens off; Apache: ServerTokens Prod).",
+          "Redirect HTTP to HTTPS first and send the HSTS header on the HTTPS response."
+        ],
+        "policy": null
+      },
+      "meta": {
+        "scanner": "httpx",
+        "proxy": null,
+        "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36 HeaderSpecter/1.0.0",
+        "body_bytes_read": 210,
+        "total_ms": 24.23,
+        "probes": [
+          "cors"
+        ]
+      }
+    }
+  ]
+}

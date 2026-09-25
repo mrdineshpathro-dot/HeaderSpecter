@@ -1,0 +1,9 @@
+# HeaderSpecter runtime dependencies
+# Install with:  pip install -r requirements.txt
+
+rich>=13.7,<16          # terminal UI: colours, tables, panels, progress bars
+httpx>=0.27,<0.29       # async HTTP client (HTTP/1.1, optional HTTP/2, proxies)
+PyYAML>=6.0,<7          # custom header policy files (--policy policy.yaml)
+
+# Optional extras -----------------------------------------------------------
+# h2>=4.1               # enable HTTP/2 negotiation  (pip install 'headerspecter[http2]')

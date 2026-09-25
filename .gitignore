@@ -1,0 +1,68 @@
+# ---- Python ---------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib60/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# ---- Virtual environments -------------------------------------------------
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# ---- Testing / tooling ----------------------------------------------------
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.hypothesis/
+
+# ---- HeaderSpecter output -------------------------------------------------
+# Generated scan artefacts should not be committed. The reports/ directory is
+# kept in the repository (with a couple of curated samples) but ad-hoc output
+# and baselines stay local.
+reports/*.json
+reports/*.csv
+reports/*.html
+reports/*.md
+!reports/sample-*.json
+!reports/sample-*.csv
+!reports/sample-*.html
+!reports/sample-*.md
+!reports/README.md
+baseline*.json
+*.baseline.json
+scan-*.json
+headerspecter-*.html
+
+# ---- Editors / OS ---------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db

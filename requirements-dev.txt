@@ -1,0 +1,7 @@
+# HeaderSpecter development dependencies
+-r requirements.txt
+
+pytest>=8.0
+pytest-asyncio>=0.23
+respx>=0.21          # httpx mocking for the scanner tests
+ruff>=0.5            # linting / formatting (optional but recommended)
