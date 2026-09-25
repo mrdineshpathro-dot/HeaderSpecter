@@ -1,0 +1,19 @@
+# HeaderSpecter target list
+#   headerspecter -l examples/targets.txt --threads 20 --delay 0.2
+#
+# One target per line. Blank lines and '#' comments are ignored, bare
+# hostnames are upgraded to https:// and duplicates are removed automatically.
+#
+# Only scan hosts you own or are explicitly authorised to assess.
+
+# --- local lab (python3 examples/demo_server.py) ---------------------------
+http://127.0.0.1:8080/
+http://127.0.0.1:8080/weak
+http://127.0.0.1:8080/legacy
+http://127.0.0.1:8080/api
+http://127.0.0.1:8080/redirect
+
+# --- your own estate -------------------------------------------------------
+# https://example.com
+# https://www.example.com
+# app.example.com

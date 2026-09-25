@@ -1,0 +1,16 @@
+HTTP/2 200 OK
+date: Thu, 25 Sep 2026 10:14:31 GMT
+content-type: text/html; charset=utf-8
+content-security-policy: default-src 'self'; script-src 'self' 'nonce-Kj8vQ2mZp1Xw7bNc4RtY9f' 'strict-dynamic'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests; report-to csp-endpoint
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-content-type-options: nosniff
+x-frame-options: DENY
+referrer-policy: strict-origin-when-cross-origin
+permissions-policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=(), interest-cohort=()
+cross-origin-opener-policy: same-origin
+cross-origin-resource-policy: same-origin
+cross-origin-embedder-policy: require-corp
+x-permitted-cross-domain-policies: none
+reporting-endpoints: csp-endpoint="https://example.com/csp-reports"
+cache-control: no-store
+set-cookie: __Host-session=2f1c9d0a7b; Path=/; Secure; HttpOnly; SameSite=Lax

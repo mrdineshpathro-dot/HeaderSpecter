@@ -1,0 +1,100 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "headerspecter"
+version = "1.0.0"
+description = "HTTP Security Header Analyzer & Security Posture Scanner"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Mr Dinesh Pathro" }]
+maintainers = [{ name = "Mr Dinesh Pathro" }]
+keywords = [
+    "security",
+    "http-headers",
+    "security-headers",
+    "csp",
+    "hsts",
+    "cors",
+    "web-security",
+    "pentesting",
+    "bug-bounty",
+    "kali-linux",
+    "appsec",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Security",
+    "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
+]
+dependencies = [
+    "rich>=13.7,<16",
+    "httpx>=0.27,<0.29",
+    "PyYAML>=6.0,<7",
+]
+
+[project.optional-dependencies]
+http2 = ["h2>=4.1"]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/mrdineshpathro-dot/HeaderSpecter"
+Repository = "https://github.com/mrdineshpathro-dot/HeaderSpecter"
+Issues = "https://github.com/mrdineshpathro-dot/HeaderSpecter/issues"
+"Buy me a coffee" = "https://buymeacoffee.com/mrdineshpathro"
+
+[project.scripts]
+headerspecter = "headerspecter.cli:main"
+
+[tool.setuptools]
+packages = ["headerspecter"]
+
+[tool.setuptools.package-data]
+headerspecter = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = ["error::DeprecationWarning:headerspecter.*"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4", "SIM", "D"]
+ignore = [
+    "D203",  # conflicts with D211
+    "D213",  # conflicts with D212
+    "E501",  # long lines are handled by the formatter
+    "B008",
+    "SIM108",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D100", "D101", "D102", "D103", "D104"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
